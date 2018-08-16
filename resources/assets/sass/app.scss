@@ -1,0 +1,59 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.head-title {
+  font-size: 80px;
+  font-weight: 900;
+  display: inline-block;
+  color: #fff;
+  margin: 0 !important;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.navbar-top {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.navbar-bottom {
+  padding: 20px 0;
+}
+
+td {
+  font-size: 40px;
+  vertical-align: middle !important;
+  padding-left: 30px !important;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+th {
+  font-size: 20px;
+  font-weight: bolder;
+  padding-left: 30px !important;
+}
+
+.airlines {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  background-color: $body-bg;
+}
+
+.status {
+  font-size: 30 !important;
+  text-align: center;
+  width: 300px;
+  padding-left: 0 !important;
+}
