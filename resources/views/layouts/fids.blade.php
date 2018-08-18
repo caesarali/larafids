@@ -15,29 +15,26 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body style="background-color: #212529">
+<body class="@yield('bg-color')">
     <div id="app">
-        <nav class="navbar navbar-top navbar-expand-md navbar-light bg-primary">
-            <div class="navbar-brand">
-                <img style="border: white 5px solid; padding: 10px; border-radius: 5px" src="https://png.icons8.com/ios/52/ffffff/airplane-take-off-filled.png">
+        <nav class="navbar navbar-top navbar-expand-md navbar-light bg-gradient">
+            @yield('brand')
+            <div class="navbar-nav ml-auto">
+                <h1 class="date text-right pr-3">
+                    {{ date('l') }}<br>
+                    {{ date('j F, Y') }}
+                </h1>
+                <div id="time" class="time"></div>
             </div>
-            <h1 class="head-title">DEPARTURES</h1>
         </nav>
 
         <main>
             @yield('content')
         </main>
-
-        <nav class="navbar navbar-bottom navbar-expand-md navbar-dark fixed-bottom text-white">
-            <marquee>
-                <h1 class="marquee">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus aperiam numquam provident nam dicta veritatis, ad omnis harum quasi nobis eius cumque sint delectus, expedita distinctio sit dolore aliquid libero!</h1>
-            </marquee>
-        </nav>
     </div>
 </body>
 </html>
