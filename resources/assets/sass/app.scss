@@ -5,6 +5,9 @@
 @import url('https://fonts.googleapis.com/css?family=Archivo');
 @import url('https://use.fontawesome.com/releases/v5.2.0/css/all.css');
 
+// Libraries
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css');
+
 // Variables
 @import 'variables';
 
@@ -14,6 +17,35 @@
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.bg-black {
+    background-color: $body-color;
+}
+
+.bg-gradient {
+  background: linear-gradient(to right, #003399 0%, #0066ff 80%);
+}
+
+
+// FIDS Page
+.fids .table-striped tbody tr:nth-of-type(odd){
+    background-color: #003399 !important;
+}
+
+.fids td {
+  font-size: 40px;
+  vertical-align: middle !important;
+  padding-left: 30px !important;
+  cursor: pointer;
+  font-family: 'Anaheim';
+}
+
+.fids th {
+  font-size: 30px;
+  font-weight: 100;
+  padding-left: 30px !important;
+  font-family: 'Archivo';
 }
 
 .head-title {
@@ -29,37 +61,14 @@
   padding: 40px 30px;
 }
 
-.bg-black {
-  background-color: $body-color;
-}
-
-.bg-gradient {
-  background: linear-gradient(to right, #003399 0%, #0066ff 80%);
-}
-
 .navbar-bottom {
   padding: 20px 0;
-}
-
-td {
-  font-size: 40px;
-  vertical-align: middle !important;
-  padding-left: 30px !important;
-  cursor: pointer;
-  font-family: 'Anaheim';
-}
-
-th {
-  font-size: 30px;
-  font-weight: 100;
-  padding-left: 30px !important;
-  font-family: 'Archivo';
 }
 
 .airlines {
   padding-left: 20px !important;
   padding-right: 20px !important;
-  background-color: $body-bg;
+  background-color: #fff;
 }
 
 .airlines > img {
@@ -78,7 +87,7 @@ th {
   font-weight: 900;
   color: #fff;
   padding: 0 30px;
-  border: $body-bg solid 5px;
+  border: #fff solid 5px;
   border-radius: 5px;
   font-family: 'Anaheim';
 }

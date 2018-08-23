@@ -33,7 +33,7 @@
                     <td>Banjarmasin</td>
                     <td class="text-center"><span class="badge badge-warning">1</span></td>
                     <td>14.50 AM</td>
-                    <td class="status bg-primary">ON TIME</td>
+                    <td class="status bg-primary animated flipInX slower">ON TIME</td>
                     <td class="text-center">On Time</td>
                 </tr>
                 <tr>
@@ -44,7 +44,7 @@
                     <td>Banjarmasin</td>
                     <td class="text-center"><span class="badge badge-warning">1</span></td>
                     <td>14.50 AM</td>
-                    <td class="bg-success status">DEPARTED</td>
+                    <td class="bg-success status animated flipInX delay-5s">DEPARTED</td>
                     <td class="text-center">On Time</td>
                 </tr>
                 <tr>
@@ -55,7 +55,7 @@
                     <td>Banjarmasin</td>
                     <td class="text-center"><span class="badge badge-warning">1</span></td>
                     <td>14.50 AM</td>
-                    <td class="status bg-primary">ON TIME</td>
+                    <td class="status bg-primary animated flipInX delay-5s">ON TIME</td>
                     <td class="text-center">On Time</td>
                 </tr>
                 <tr>
@@ -66,7 +66,7 @@
                     <td>Banjarmasin</td>
                     <td class="text-center"><span class="badge badge-warning">1</span></td>
                     <td>14.50 AM</td>
-                    <td class="bg-warning status">DELAYED</td>
+                    <td class="bg-warning status animated flipInX delay-5s">DELAYED</td>
                     <td class="text-center">On Time</td>
                 </tr>
                 <tr>
@@ -77,7 +77,7 @@
                     <td>Banjarmasin</td>
                     <td class="text-center"><span class="badge badge-warning">1</span></td>
                     <td>14.50 AM</td>
-                    <td class="bg-danger status">CANCELED</td>
+                    <td class="bg-danger status animated flipInX delay-5s">CANCELED</td>
                     <td class="text-center">On Time</td>
                 </tr>
                 <tr>
@@ -88,7 +88,7 @@
                     <td>Banjarmasin</td>
                     <td class="text-center"><span class="badge badge-warning">1</span></td>
                     <td>14.50 AM</td>
-                    <td class="bg-warning status">DELAYED</td>
+                    <td class="bg-warning status animated flipInX delay-5s">DELAYED</td>
                     <td class="text-center">On Time</td>
                 </tr>
                 <tr>
@@ -99,7 +99,7 @@
                     <td>Banjarmasin</td>
                     <td class="text-center"><span class="badge badge-warning">1</span></td>
                     <td>14.50 AM</td>
-                    <td class="bg-success status">DEPARTED</td>
+                    <td class="bg-success status animated flipInX delay-5s">DEPARTED</td>
                     <td class="text-center">On Time</td>
                 </tr>
             </tbody>

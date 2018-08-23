@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+require('./fids');
 
 window.Vue = require('vue');
 
@@ -20,15 +21,3 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 const app = new Vue({
     el: '#app'
 });
-
-function clock()
-{
-    var now = new Date();
-    var mins = ('0' + now.getMinutes()).slice(-2);
-    var hr = now.getHours();
-    var Time = hr + ":" + mins;
-    document.getElementById("time").innerHTML = Time;
-    requestAnimationFrame(clock);
-}
-
-requestAnimationFrame(clock);

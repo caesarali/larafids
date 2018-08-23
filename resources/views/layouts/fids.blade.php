@@ -20,7 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="@yield('bg-color')">
-    <div id="app">
+    <div id="app" class="fids">
         <nav class="navbar navbar-top navbar-expand-md navbar-light bg-gradient">
             @yield('brand')
             <div class="navbar-nav ml-auto">
