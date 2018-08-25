@@ -12,34 +12,32 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-search"></i></span>
                             </div>
-                            <input type="text" id="key" class="form-control" placeholder="Search airline...">
+                            <input type="text" id="key" class="form-control" placeholder="Search...">
                             <div class="input-group-append">
-                                <button class="btn btn-primary d-inline d-sm-none" data-toggle="modal" data-target="#create"> Add Airline </button>
+                                <button class="btn btn-primary d-inline d-sm-none" data-toggle="modal" data-target="#create"> Add Region </button>
                             </div>
                         </div>
-                        <button class="btn btn-primary ml-auto d-none d-sm-inline" data-toggle="modal" data-target="#create"> Add Airline </button>
+                        <button class="btn btn-primary ml-auto d-none d-sm-inline" data-toggle="modal" data-target="#create"> Add Region </button>
                     </div>
                 </div>
                 <table class="table">
                     <thead class="thead-light">
                         <tr>
-                            <th class="py-2" scope="col"></th>
-                            <th class="py-2" scope="col">AIRLINE</th>
-                            <th class="py-2" scope="col">CORPORATE</th>
-                            <th class="py-2" scope="col">LOGO</th>
+                            <th class="py-2" scope="col">NO.</th>
+                            <th class="py-2" scope="col">CODE</th>
+                            <th class="py-2" scope="col">NAME</th>
                             <th class="py-2" scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($airlines as $row)
+                        @forelse ($regions as $row)
                             <tr>
                                 <td width="10">{{ $loop->iteration }}.</td>
+                                <td nowrap>{{ $row->code }}</td>
                                 <td nowrap>{{ $row->name }}</td>
-                                <td nowrap>{{ $row->corporate }}</td>
-                                <td width="120">{!! $row->getLogo() !!}</td>
                                 <td nowrap class="text-right">
-                                    <a href="{{ route('airlines.edit', $row->id) }}" class="btn btn-light text-secondary"><i class="fas fa-edit"></i></a>
-                                    <form action="{{ route('airlines.destroy', $row->id) }}" method="POST" class="d-inline">
+                                    <a href="{{ route('regions.edit', $row->id) }}" class="btn btn-light text-secondary"><i class="fas fa-edit"></i></a>
+                                    <form action="{{ route('regions.destroy', $row->id) }}" method="POST" class="d-inline">
                                         @csrf @method('delete')
                                         <button type="submit" class="btn btn-light text-secondary btn-delete"><i class="fas fa-trash"></i></button>
                                     </form>
@@ -58,16 +56,16 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Add Airline</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Add Region</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{ route('airlines.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('regions.store') }}" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="row justify-content-md-center">
                             <div class="col-md-10">
-                                @include('admin.airline._form')
+                                @include('admin.region._form')
                             </div>
                         </div>
                         <hr>
@@ -75,7 +73,7 @@
                             <div class="col-md-10">
                                 <div class="row">
                                     <div class="col-sm-10 offset-sm-2">
-                                        <button type="submit" class="btn btn-primary">Submit Airline</button>
+                                        <button type="submit" class="btn btn-primary">Submit Region</button>
                                         <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                     </div>
                                 </div>
@@ -101,7 +99,7 @@
             "columnDefs": [
                 {
                     "orderable": false,
-                    "targets": 4
+                    "targets": 3
                 }
             ]
         });

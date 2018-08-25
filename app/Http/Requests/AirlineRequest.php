@@ -13,7 +13,7 @@ class AirlineRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,14 @@ class AirlineRequest extends FormRequest
      */
     public function rules()
     {
+        $picture = 'required';
+        if ($this->method() == 'PATCH' || $this->method() == 'PUT') {
+            $picture = 'nullable';
+        }
         return [
-            //
+            'name' => 'required|string|max:50',
+            'corporate' => 'required|string|max:100',
+            'picture' => $picture.'|file|mimes:jpg,png|max:2048'
         ];
     }
 }

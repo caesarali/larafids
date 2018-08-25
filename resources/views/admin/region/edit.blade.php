@@ -7,17 +7,17 @@
         <div class="col-md-9">
             <div class="card border-light mb-3">
                 <div class="card-header text-center">
-                    <a href="{{ route('airlines.index') }}" class="btn p-0 float-left">
+                    <a href="{{ route('regions.index') }}" class="btn p-0 float-left">
                         <i class="fa fa-arrow-left"></i>
                         <span class="ml-1 d-none d-sm-inline">Kembali</span>
                     </a>
                 </div>
-                <form action="{{ route('airlines.update', $airline->id) }}" method="POST">
+                <form action="{{ route('regions.update', $region->id) }}" method="POST">
                     <div class="card-body">
                         <div class="row justify-content-md-center">
                             <div class="col-md-10">
                                 @method('patch')
-                                @include('admin.airline._form')
+                                @include('admin.region._form')
                             </div>
                         </div>
                     </div>
@@ -26,8 +26,8 @@
                             <div class="col-md-10">
                                 <div class="row">
                                     <div class="col-sm-10 offset-sm-2">
-                                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                                        <a href="{{ route('airlines.index') }}" class="btn btn-secondary">Batal</a>
+                                        <button type="submit" class="btn btn-primary">Save Change!</button>
+                                        <a href="{{ route('regions.index') }}" class="btn btn-secondary">Cancel</a>
                                     </div>
                                 </div>
                             </div>

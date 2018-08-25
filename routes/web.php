@@ -26,7 +26,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('control-panel', 'HomeController@controlPanel')->name('control-panel');
 
 Route::middleware('auth')->group(function () {
-    Route::namespace('Master')->prefix('master')->group(function () {
+    Route::namespace('Master')->group(function () {
         Route::resource('airlines', 'AirlineController');
         Route::resource('regions', 'RegionController');
     });

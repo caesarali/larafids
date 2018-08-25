@@ -29,5 +29,23 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     @yield('scripts')
     @include('layouts.scripts.swal')
+
+    <script>
+        $('.btn-delete').click(function(event) {
+            event.preventDefault();
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this data!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    this.form.submit();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
