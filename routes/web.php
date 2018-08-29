@@ -15,11 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('/departures', 'FidsController@departures')->name('departures');
+Route::get('/arrivals', 'FidsController@arrivals')->name('arrivals');
 
-// Route::get('/{page}', function ($page) {
-//     return view("$page");
-// });
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -30,4 +29,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('airlines', 'AirlineController');
         Route::resource('regions', 'RegionController');
     });
+
+    Route::get('flight/{type}/create', 'FlightController@create')->name('flight.create');
+    Route::post('flight/{type}', 'FlightController@store')->name('flight.store');
 });

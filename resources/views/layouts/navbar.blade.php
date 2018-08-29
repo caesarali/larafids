@@ -12,8 +12,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('control-panel') }}">Control Panel</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('airlines.index') }}">Data Master</a>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        Data Master <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('airlines.index') }}">Airline</a>
+                        <a class="dropdown-item" href="{{ route('regions.index') }}">Route</a>
+                    </div>
                 </li>
             </ul>
 
@@ -34,9 +40,7 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
