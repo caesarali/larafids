@@ -55,27 +55,39 @@
 </div>
 <div class="form-group row">
     <label for="flight_number" class="col-sm-3 col-form-label">Operation Days</label>
-    <div class="col-sm-9">
+    {{-- <div class="col-sm-9">
         <input type="text" name="flight_number" class="form-control" required>
+    </div> --}}
+    <div class="col-sm-4">
         <div class="custom-control custom-checkbox my-3">
             <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
             <label class="custom-control-label" for="customControlValidation1">Sunday</label>
         </div>
         <div class="custom-control custom-checkbox my-3">
-            <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
-            <label class="custom-control-label" for="customControlValidation1">Monday</label>
+            <input type="checkbox" class="custom-control-input" id="customControlValidation2" required>
+            <label class="custom-control-label" for="customControlValidation2">Monday</label>
         </div>
         <div class="custom-control custom-checkbox my-3">
-            <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
-            <label class="custom-control-label" for="customControlValidation1">Thuesday</label>
+            <input type="checkbox" class="custom-control-input" id="customControlValidation3" required>
+            <label class="custom-control-label" for="customControlValidation3">Tuesday</label>
         </div>
         <div class="custom-control custom-checkbox my-3">
-            <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
-            <label class="custom-control-label" for="customControlValidation1">Wednesday</label>
+            <input type="checkbox" class="custom-control-input" id="customControlValidation3" required>
+            <label class="custom-control-label" for="customControlValidation3">Wednesday</label>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="custom-control custom-checkbox my-3">
+            <input type="checkbox" class="custom-control-input" id="customControlValidation5" required>
+            <label class="custom-control-label" for="customControlValidation5">Thursday</label>
         </div>
         <div class="custom-control custom-checkbox my-3">
-            <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
-            <label class="custom-control-label" for="customControlValidation1">Friday</label>
+            <input type="checkbox" class="custom-control-input" id="customControlValidation6" required>
+            <label class="custom-control-label" for="customControlValidation6">Friday</label>
+        </div>
+        <div class="custom-control custom-checkbox my-3">
+            <input type="checkbox" class="custom-control-input" id="customControlValidation7" required>
+            <label class="custom-control-label" for="customControlValidation7">Saturday</label>
         </div>
     </div>
 </div>
