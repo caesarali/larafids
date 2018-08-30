@@ -30,3 +30,16 @@
     </div>
 </div>
 @endsection
+
+@section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+<script>
+    $('#departuretime').datetimepicker({
+        format: 'HH:mm'
+    });
+    $('#arrivaltime').datetimepicker({
+        format: 'HH:mm'
+    });
+</script>
+@endsection

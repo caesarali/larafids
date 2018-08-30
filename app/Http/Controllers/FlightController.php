@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Region;
 use App\Airline;
+use App\Flight;
+use App\Schedule;
+use Carbon\Carbon;
 
 class FlightController extends Controller
 {
@@ -17,6 +20,13 @@ class FlightController extends Controller
 
     public function store(Request $request, $type)
     {
-        dd($request->all());
+        $request->request->add(['type' => $type]);
+        $flight = Flight::create($request->all());
+        return redirect()->route('control-panel')->with([
+            'alert' => 'swal',
+            'header' => 'Success!',
+            'text' => 'Flight schedule has been created.',
+            'type' => 'success'
+        ]);
     }
 }
