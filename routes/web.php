@@ -22,14 +22,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('control-panel', 'HomeController@controlPanel')->name('control-panel');
-
 Route::middleware('auth')->group(function () {
     Route::namespace('Master')->group(function () {
         Route::resource('airlines', 'AirlineController');
         Route::resource('regions', 'RegionController');
     });
 
+
+    Route::get('control-panel', 'FlightController@index')->name('control-panel');
     Route::get('flight/{type}/create', 'FlightController@create')->name('flight.create');
     Route::post('flight/{type}', 'FlightController@store')->name('flight.store');
 });

@@ -11,6 +11,12 @@ use Carbon\Carbon;
 
 class FlightController extends Controller
 {
+    public function index()
+    {
+        $schedules = Schedule::orderBy('day', 'asc')->get();
+        return view('admin.flight.index', compact('schedules'));
+    }
+
     public function create($type)
     {
         $routes = Region::all();
@@ -22,6 +28,12 @@ class FlightController extends Controller
     {
         $request->request->add(['type' => $type]);
         $flight = Flight::create($request->all());
+        foreach ($request->days as $day) {
+            Schedule::create([
+                'flight_id' => $flight->id,
+                'day' => $day
+            ]);
+        }
         return redirect()->route('control-panel')->with([
             'alert' => 'swal',
             'header' => 'Success!',

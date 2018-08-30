@@ -19,15 +19,16 @@ class CreateFlightsTable extends Migration
             $table->integer('airline_id')->unsigned();
             $table->string('aircraft_id');
             $table->string('flight_number');
-            $table->integer('origin')->unsigned();
-            $table->integer('destination')->unsigned();
+            $table->integer('origin_id')->unsigned();
+            $table->integer('destination_id')->unsigned();
             $table->time('etd');
             $table->time('eta');
+            $table->integer('terminal')->unsigned()->nullable();
             $table->timestamps();
 
             $table->foreign('airline_id')->references('id')->on('airlines')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('origin')->references('id')->on('regions')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('destination')->references('id')->on('regions')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('origin_id')->references('id')->on('regions')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('destination_id')->references('id')->on('regions')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

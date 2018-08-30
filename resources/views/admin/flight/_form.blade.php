@@ -1,8 +1,11 @@
 @csrf
 <div class="form-group row">
-    <label for="type" class="col-sm-3 col-form-label">Type</label>
-    <div class="col-sm-9">
+    <label for="type" class="col-sm-3 col-form-label">Flight - Terminal</label>
+    <div class="col-sm-6">
         <input type="text" name="type" class="form-control" value="{{ strtoupper($type) }}" readonly>
+    </div>
+    <div class="col-sm-3">
+        <input type="text" name="terminal" class="form-control" placeholder="Terminal..." value="{{ old('terminal') }}" required>
     </div>
 </div>
 <div class="form-group row">
@@ -19,19 +22,19 @@
 <div class="form-group row">
     <label for="flight_number" class="col-sm-3 col-form-label">Aircraft Type</label>
     <div class="col-sm-4">
-        <input type="text" name="aircraft_id" class="form-control" required>
+        <input type="text" name="aircraft_id" class="form-control" placeholder="Ex: ATR" required>
     </div>
 </div>
 <div class="form-group row">
     <label for="flight_number" class="col-sm-3 col-form-label">Flight No.</label>
     <div class="col-sm-4">
-        <input type="text" name="flight_number" class="form-control" required>
+        <input type="text" name="flight_number" class="form-control" placeholder="Ex: IW0001" required>
     </div>
 </div>
 <div class="form-group row">
     <label for="type" class="col-sm-3 col-form-label">Flight Route</label>
     <div class="col-sm-4">
-        <select name="origin" class="form-control">
+        <select name="origin_id" class="form-control">
             <option value="">Choose origin..</option>
             @foreach ($routes as $route)
                 <option value="{{ $route->id }}">{{ $route->code }} - {{ $route->name }}</option>
@@ -40,7 +43,7 @@
     </div>
     <label for="type" class="col-sm-1 col-form-label text-center"><i class="fas fa-arrow-right"></i></label>
     <div class="col-sm-4">
-        <select name="destination" class="form-control">
+        <select name="destination_id" class="form-control">
             <option value="">Choose destination..</option>
             @foreach ($routes as $route)
                 <option value="{{ $route->id }}">{{ $route->code }} - {{ $route->name }}</option>
