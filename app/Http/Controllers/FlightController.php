@@ -11,10 +11,34 @@ use Carbon\Carbon;
 
 class FlightController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $schedules = Schedule::orderBy('day', 'asc')->get();
-        return view('admin.flight.index', compact('schedules'));
+        $d = $request->d ?? null;
+        $a = $request->a ?? null;
+
+        if ($d == 'all') {
+            $departures = Schedule::whereHas('flight', function ($query) {
+                $query->where('type', 'departure');
+            })->orderBy('day', 'asc')->get();
+        }
+        else {
+            $departures = Schedule::whereHas('flight', function ($query) {
+                $query->where('type', 'departure');
+            })->where('day', date('N'))->get();
+        }
+
+        if ($a == 'all') {
+            $arrivals = Schedule::whereHas('flight', function ($query) {
+                $query->where('type', 'arrival');
+            })->orderBy('day', 'asc')->get();
+        }
+        else {
+            $arrivals = Schedule::whereHas('flight', function ($query) {
+                $query->where('type', 'arrival');
+            })->where('day', date('N'))->get();
+        }
+
+        return view('admin.flight.index', compact('departures', 'arrivals', 'd', 'a'));
     }
 
     public function create($type)
@@ -38,6 +62,45 @@ class FlightController extends Controller
             'alert' => 'swal',
             'header' => 'Success!',
             'text' => 'Flight schedule has been created.',
+            'type' => 'success'
+        ]);
+    }
+
+    public function edit(Flight $flight)
+    {
+        $routes = Region::all();
+        $airlines = Airline::all();
+        return view('admin.flight.edit', compact('flight', 'routes', 'airlines'));
+    }
+
+    public function update(Request $request, Flight $flight)
+    {
+        $flight->update($request->all());
+        foreach ($flight->schedules as $schedule) {
+            $schedule->delete();
+        }
+        foreach ($request->days as $day) {
+            Schedule::create([
+                'flight_id' => $flight->id,
+                'day' => $day
+            ]);
+        }
+
+        return redirect()->back()->with([
+            'alert' => 'swal',
+            'header' => 'Success!',
+            'text' => 'Flight schedule has been updated.',
+            'type' => 'success'
+        ]);
+    }
+
+    public function destroy(Flight $flight)
+    {
+        $flight->delete();
+        return redirect()->back()->with([
+            'alert' => 'swal',
+            'header' => 'Success!',
+            'text' => 'Flight schedule has been deleted.',
             'type' => 'success'
         ]);
     }

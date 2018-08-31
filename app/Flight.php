@@ -7,7 +7,7 @@ use Carbon\Carbon;
 
 class Flight extends Model
 {
-    protected $fillable = ['type', 'airline_id', 'aircraft_id', 'flight_number', 'origin_id', 'destination_id', 'etd', 'eta'];
+    protected $fillable = ['type', 'terminal', 'airline_id', 'aircraft_id', 'flight_number', 'origin_id', 'destination_id', 'etd', 'eta'];
 
     public function setTypeAttribute($value) {
         $this->attributes['type'] = strtolower($value);
@@ -43,5 +43,16 @@ class Flight extends Model
 
     public function destination() {
         return $this->belongsTo('App\Region', 'destination_id');
+    }
+
+    public function schedules() {
+        return $this->hasMany('App\Schedule');
+    }
+
+    public function haveDay($day) {
+        $check = $this->schedules->where('day', $day)->first();
+        if ($check) {
+            return true;
+        } return false;
     }
 }

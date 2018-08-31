@@ -34,4 +34,8 @@ class Schedule extends Model
     public function flight() {
         return $this->belongsTo('App\Flight');
     }
+
+    public function remark() {
+        return $this->hasOne('App\Remark')->where('created_at', Carbon::now());
+    }
 }

@@ -11,13 +11,14 @@
                         <span class="ml-1 d-none d-sm-inline">Kembali</span>
                     </a>
                 </div>
-                <form action="{{ route('flights.store', $type) }}" method="POST">
+                <form action="{{ route('flights.update', $flight->id) }}" method="POST">
                     <div class="card-body">
+                        @method('patch')
                         @include('admin.flight._form')
                         <hr>
                         <div class="form-group text-right mb-0">
                             <button type="submit" class="btn btn-primary mr-1">
-                                <i class="fas fa-check mr-1"></i> Submit Flight Schedule
+                                <i class="fas fa-check mr-1"></i> Update Flight Schedule
                             </button>
                             <button type="reset" class="btn btn-secondary">
                                 Cancel

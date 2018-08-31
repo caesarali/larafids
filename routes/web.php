@@ -28,8 +28,10 @@ Route::middleware('auth')->group(function () {
         Route::resource('regions', 'RegionController');
     });
 
-
     Route::get('control-panel', 'FlightController@index')->name('control-panel');
-    Route::get('flight/{type}/create', 'FlightController@create')->name('flight.create');
-    Route::post('flight/{type}', 'FlightController@store')->name('flight.store');
+    Route::get('flights/{type}/create', 'FlightController@create')->name('flights.create');
+    Route::post('flights/{type}', 'FlightController@store')->name('flights.store');
+    Route::get('flights/{flight}/edit', 'FlightController@edit')->name('flights.edit');
+    Route::patch('flights/{flight}', 'FlightController@update')->name('flights.update');
+    Route::delete('flights/{flight}', 'FlightController@destroy')->name('flights.destroy');
 });
