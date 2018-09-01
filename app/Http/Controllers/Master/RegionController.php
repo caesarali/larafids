@@ -5,13 +5,15 @@ namespace App\Http\Controllers\Master;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Region;
+use App\DefaultLocation;
 
 class RegionController extends Controller
 {
     public function index()
     {
         $regions = Region::orderBy('name', 'asc')->get();
-        return view('admin.region.index', compact('regions'));
+        $default = DefaultLocation::all()->first();
+        return view('admin.region.index', compact('regions', 'default'));
     }
 
     public function store(Request $request)
@@ -56,6 +58,26 @@ class RegionController extends Controller
             'alert' => 'swal',
             'header' => 'Success!',
             'text' => 'Region has been deleted.',
+            'type' => 'success'
+        ]);
+    }
+
+    public function setDefault(Region $region)
+    {
+        $default = DefaultLocation::all()->first();
+        if ($default) {
+            $default->update([
+                'region_id' => $region->id
+            ]);
+        } else {
+            $default = DefaultLocation::create([
+                'region_id' => $region->id
+            ]);
+        }
+        return redirect()->back()->with([
+            'alert' => 'swal',
+            'header' => 'Success!',
+            'text' => "$region->name has been set as Default Location.",
             'type' => 'success'
         ]);
     }

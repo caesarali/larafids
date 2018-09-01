@@ -26,12 +26,17 @@ Route::middleware('auth')->group(function () {
     Route::namespace('Master')->group(function () {
         Route::resource('airlines', 'AirlineController');
         Route::resource('regions', 'RegionController');
+        Route::post('regions/{region}/set-default', 'RegionController@setDefault')->name('regions.setDefault');
     });
 
-    Route::get('control-panel', 'FlightController@index')->name('control-panel');
+    Route::get('control-panel', 'HomeController@controlPanel')->name('control-panel');
+    Route::get('flights/{type}', 'FlightController@index')->name('flights.index');
     Route::get('flights/{type}/create', 'FlightController@create')->name('flights.create');
     Route::post('flights/{type}', 'FlightController@store')->name('flights.store');
     Route::get('flights/{flight}/edit', 'FlightController@edit')->name('flights.edit');
     Route::patch('flights/{flight}', 'FlightController@update')->name('flights.update');
     Route::delete('flights/{flight}', 'FlightController@destroy')->name('flights.destroy');
+
+    Route::delete('schedule/{schedule}', 'ScheduleController@destroy')->name('schedule.destroy');
+    Route::post('{schedule}/remark', 'ScheduleController@remark')->name('schedule.remark');
 });

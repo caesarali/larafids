@@ -7,45 +7,37 @@ use App\Region;
 use App\Airline;
 use App\Flight;
 use App\Schedule;
+use App\Status;
+use App\DefaultLocation;
 use Carbon\Carbon;
 
 class FlightController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, $type)
     {
-        $d = $request->d ?? null;
-        $a = $request->a ?? null;
+        $status = new Status;
+        $statList = $status->list;
+        $f = $request->f ?? null;
 
-        if ($d == 'all') {
-            $departures = Schedule::whereHas('flight', function ($query) {
-                $query->where('type', 'departure');
-            })->orderBy('day', 'asc')->get();
-        }
-        else {
-            $departures = Schedule::whereHas('flight', function ($query) {
-                $query->where('type', 'departure');
-            })->where('day', date('N'))->get();
-        }
+        $schedules = Schedule::whereHas('flight', function ($query) use ($type) {
+            $query->where('type', $type);
+        });
 
-        if ($a == 'all') {
-            $arrivals = Schedule::whereHas('flight', function ($query) {
-                $query->where('type', 'arrival');
-            })->orderBy('day', 'asc')->get();
-        }
-        else {
-            $arrivals = Schedule::whereHas('flight', function ($query) {
-                $query->where('type', 'arrival');
-            })->where('day', date('N'))->get();
+        if ($f == 'all') {
+            $schedules = $schedules->orderBy('day', 'asc')->get();
+        } else {
+            $schedules = $schedules->where('day', date('N'))->get();
         }
 
-        return view('admin.flight.index', compact('departures', 'arrivals', 'd', 'a'));
+        return view('admin.flight.index', compact('schedules', 'type', 'f', 'statList'));
     }
 
     public function create($type)
     {
         $routes = Region::all();
         $airlines = Airline::all();
-        return view('admin.flight.create', compact('type', 'routes', 'airlines'));
+        $location = DefaultLocation::all()->first();
+        return view('admin.flight.create', compact('type', 'routes', 'airlines', 'location'));
     }
 
     public function store(Request $request, $type)

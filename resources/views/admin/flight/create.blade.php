@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card mb-4">
                 <div class="card-header">
-                    <a href="{{ route('control-panel') }}" class="btn p-0">
+                    <a href="{{ route('flights.index', $type) }}" class="btn p-0">
                         <i class="fa fa-arrow-left"></i>
                         <span class="ml-1 d-none d-sm-inline">Kembali</span>
                     </a>

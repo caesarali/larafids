@@ -36,6 +36,6 @@ class Schedule extends Model
     }
 
     public function remark() {
-        return $this->hasOne('App\Remark')->where('created_at', Carbon::now());
+        return $this->hasOne('App\Remark')->whereDate('created_at', Carbon::now()->format('Y-m-d'));
     }
 }

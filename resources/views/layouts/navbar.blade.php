@@ -18,7 +18,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('airlines.index') }}">Airline</a>
-                        <a class="dropdown-item" href="{{ route('regions.index') }}">Route</a>
+                        <a class="dropdown-item" href="{{ route('regions.index') }}">Location</a>
                     </div>
                 </li>
             </ul>

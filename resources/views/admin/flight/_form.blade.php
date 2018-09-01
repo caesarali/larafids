@@ -35,23 +35,40 @@
     <label for="type" class="col-sm-3 col-form-label">Flight Route</label>
     <div class="col-sm-4">
         <select name="origin_id" class="form-control">
-            <option value="">Choose origin..</option>
-            @foreach ($routes as $route)
-                <option value="{{ $route->id }}" {{ old('origin_id', $flight->origin_id ?? '') == $route->id ? 'selected' : '' }}>
-                    {{ $route->code }} - {{ $route->name }}
+            @if ((($type ?? $flight->type) == 'departure') && !empty($location))
+                <option value="{{ $location->region_id }}">
+                    {{ $location->region->code }} - {{ $location->region->name }}
                 </option>
-            @endforeach
+            @else
+                @foreach ($routes as $route)
+                    @if ($loop->first)
+                        <option value="">Choose origin..</option>
+                    @endif
+                    <option value="{{ $route->id }}" {{ old('origin_id', $flight->origin_id ?? '') == $route->id ? 'selected' : '' }}>
+                        {{ $route->code }} - {{ $route->name }}
+                    </option>
+                @endforeach
+            @endif
         </select>
     </div>
     <label for="type" class="col-sm-1 col-form-label text-center"><i class="fas fa-arrow-right"></i></label>
     <div class="col-sm-4">
         <select name="destination_id" class="form-control">
-            <option value="">Choose destination..</option>
-            @foreach ($routes as $route)
-                <option value="{{ $route->id }}" {{ old('destination_id', $flight->destination_id ?? '') == $route->id ? 'selected' : '' }}>
-                    {{ $route->code }} - {{ $route->name }}
+
+            @if ((($type ?? $flight->type) == 'arrival') && !empty($location))
+                <option value="{{ $location->region_id }}">
+                    {{ $location->region->code }} - {{ $location->region->name }}
                 </option>
-            @endforeach
+            @else
+                @foreach ($routes as $route)
+                    @if ($loop->first)
+                        <option value="">Choose origin..</option>
+                    @endif
+                    <option value="{{ $route->id }}" {{ old('destination_id', $flight->destination_id ?? '') == $route->id ? 'selected' : '' }}>
+                        {{ $route->code }} - {{ $route->name }}
+                    </option>
+                @endforeach
+            @endif
         </select>
     </div>
 </div>

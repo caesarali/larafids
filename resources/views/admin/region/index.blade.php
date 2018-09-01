@@ -20,12 +20,13 @@
                         <button class="btn btn-primary ml-auto d-none d-sm-inline" data-toggle="modal" data-target="#create"> Add Region </button>
                     </div>
                 </div>
-                <table class="table">
+                <table class="table nowrap">
                     <thead class="thead-light">
                         <tr>
-                            <th class="py-2" scope="col">NO.</th>
+                            <th class="py-2" scope="col"></th>
                             <th class="py-2" scope="col">CODE</th>
                             <th class="py-2" scope="col">NAME</th>
+                            <th class="py-2" scope="col">DEFAULT</th>
                             <th class="py-2" scope="col"></th>
                         </tr>
                     </thead>
@@ -33,9 +34,23 @@
                         @forelse ($regions as $row)
                             <tr>
                                 <td width="10">{{ $loop->iteration }}.</td>
-                                <td nowrap>{{ $row->code }}</td>
-                                <td nowrap>{{ $row->name }}</td>
-                                <td nowrap class="text-right">
+                                <td>{{ $row->code }}</td>
+                                <td>{{ $row->name }}</td>
+                                <td>
+                                    @if (!empty($default) && $default->region_id == $row->id)
+                                        <button type="button" class="btn btn-success">
+                                            <i class="fas fa-check"></i> <span class="ml-1">Default Location</span>
+                                        </button>
+                                    @else
+                                        <form action="{{ route('regions.setDefault', $row->id) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            <button type="submit" class="btn btn-light text-secondary">
+                                                <span class="ml-1">Set as Default</span>
+                                            </button>
+                                        </form>
+                                    @endif
+                                </td>
+                                <td class="text-right">
                                     <a href="{{ route('regions.edit', $row->id) }}" class="btn btn-light text-secondary"><i class="fas fa-edit"></i></a>
                                     <form action="{{ route('regions.destroy', $row->id) }}" method="POST" class="d-inline">
                                         @csrf @method('delete')
@@ -99,7 +114,7 @@
             "columnDefs": [
                 {
                     "orderable": false,
-                    "targets": 3
+                    "targets": [3, 4]
                 }
             ]
         });
