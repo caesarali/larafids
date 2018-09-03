@@ -86,7 +86,7 @@
     <label for="type" class="col-sm-1 col-form-label text-center"><i class="fas fa-arrow-right"></i></label>
     <div class="col-sm-4">
         <div class="input-group" id="arrivaltime" data-target-input="nearest">
-            <input type="text" name="eta" class="form-control datetimepicker-input" value="{{ old('eta', $flight->etd ?? '') }}" placeholder="Arrival" data-target="#arrivaltime" required>
+            <input type="text" name="eta" class="form-control datetimepicker-input" value="{{ old('eta', $flight->eta ?? '') }}" placeholder="Arrival" data-target="#arrivaltime" required>
             <div class="input-group-append" data-target="#arrivaltime" data-toggle="datetimepicker">
                 <div class="input-group-text"><i class="far fa-clock"></i></div>
             </div>

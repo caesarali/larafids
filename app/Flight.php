@@ -30,7 +30,11 @@ class Flight extends Model
     }
 
     public function getEtdAttribute($value) {
-        return Carbon::parse($value);
+        return Carbon::parse($value)->format('H:i');
+    }
+
+    public function getEtaAttribute($value) {
+        return Carbon::parse($value)->format('H:i');
     }
 
     public function airline() {

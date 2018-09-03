@@ -13,73 +13,33 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <table class="table table-hover table-striped">
-            <thead class="text-warning">
+            <thead class="thead-dark">
                 <tr>
                     <th width="300">Airline</th>
                     <th>Flight Number</th>
                     <th>Destination</th>
                     <th class="text-center">Terminal</th>
-                    <th>Scheduled</th>
+                    <th class="text-center">Scheduled</th>
                     <th class="text-center pl-0">Remarks</th>
                     <th class="text-center">Estimated</th>
                 </tr>
             </thead>
             <tbody class="text-white">
-                <tr>
-                    <td class="airlines">
-                        <img src="{{ asset('images/airlines/IW.png') }}" alt="Wings Air" class="img-fluid">
-                    </td>
-                    <td>IW 1390</td>
-                    <td>Banjarmasin</td>
-                    <td class="text-center"><span class="badge badge-warning">1</span></td>
-                    <td>14.50 AM</td>
-                    <td class="bg-info status">ON TIME</td>
-                    <td class="text-center">On Time</td>
-                </tr>
-                <tr>
-                    <td class="airlines">
-                        <img src="{{ asset('images/airlines/IW.png') }}" alt="Wings Air" class="img-fluid">
-                    </td>
-                    <td>IW 1390</td>
-                    <td>Banjarmasin</td>
-                    <td class="text-center"><span class="badge badge-warning">1</span></td>
-                    <td>14.50 AM</td>
-                    <td class="bg-success status">DEPARTED</td>
-                    <td class="text-center">On Time</td>
-                </tr>
-                <tr>
-                    <td class="airlines">
-                        <img src="{{ asset('images/airlines/IN.png') }}" alt="Wings Air" class="img-fluid">
-                    </td>
-                    <td>IW 1390</td>
-                    <td>Banjarmasin</td>
-                    <td class="text-center"><span class="badge badge-warning">1</span></td>
-                    <td>14.50 AM</td>
-                    <td class="bg-info status">ON TIME</td>
-                    <td class="text-center">On Time</td>
-                </tr>
-                <tr>
-                    <td class="airlines">
-                        <img src="{{ asset('images/airlines/IW.png') }}" alt="Wings Air" class="img-fluid">
-                    </td>
-                    <td>IW 1390</td>
-                    <td>Banjarmasin</td>
-                    <td class="text-center"><span class="badge badge-warning">1</span></td>
-                    <td>14.50 AM</td>
-                    <td class="bg-warning status">DELAYED</td>
-                    <td class="text-center">On Time</td>
-                </tr>
-                <tr>
-                    <td class="airlines">
-                        <img src="{{ asset('images/airlines/IN.png') }}" alt="Wings Air" class="img-fluid">
-                    </td>
-                    <td>IW 1390</td>
-                    <td>Banjarmasin</td>
-                    <td class="text-center"><span class="badge badge-warning">1</span></td>
-                    <td>14.50 AM</td>
-                    <td class="bg-danger status">CANCELED</td>
-                    <td class="text-center">On Time</td>
-                </tr>
+                @foreach ($schedules as $schedule)
+                    <tr>
+                        <td class="airlines">
+                            {!! $schedule->flight->airline->getLogo() !!}
+                        </td>
+                        <td>{{ $schedule->flight->flight_number }}</td>
+                        <td>{{ $schedule->flight->destination->name }}</td>
+                        <td class="text-center"><span class="badge badge-warning">{{ $schedule->flight->terminal }}</span></td>
+                        <td class="text-center">{{ $schedule->flight->etd }}</td>
+                        <td class="{{ !empty($schedule->remark) ? $schedule->remark->getBackgroundStatus() : 'bg-primary ' }}status animated flipInX slower">
+                            {{ !empty($schedule->remark) ? $schedule->remark->getStatus() : 'ON TIME' }}
+                        </td>
+                        <td class="text-center">{{ $schedule->remark && !empty($schedule->remark->estimated) ? $schedule->remark->estimated : '-' }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

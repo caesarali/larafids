@@ -25,9 +25,9 @@ $.fn.extend({
     },
 });
 
-setInterval(function(){
-    $('.status').animateCss('flipInX');
-}, 300);
+// setInterval(function(){
+//     $('.status').animateCss('flipInX');
+// }, 300);
 
 function clock()
 {

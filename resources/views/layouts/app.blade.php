@@ -23,7 +23,6 @@
 </head>
 <body>
     <div id="app">
-        {{-- <progressbar></progressbar> --}}
         @include('layouts.navbar')
         <main class="py-4">
             @yield('content')

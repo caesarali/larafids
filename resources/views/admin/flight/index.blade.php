@@ -2,27 +2,7 @@
 
 @section('content')
 <div class="container">
-    {{-- <div class="d-flex bd-highlight mb-3">
-        <div class="bd-highlight d-none d-sm-inline pt-2">
-            <h3 class="d-inline-block text-secondary">Control Panel</h3>
-        </div>
-        <div class="ml-auto bd-highlight">
-            <a href="#" class="btn btn-primary px-4 mr-3">
-                <i class="fas fa-plane-departure mr-2"></i> <b>DEPARTURES</b>
-            </a>
-            <a href="#" class="btn bg-white text-secondary px-4">
-                <i class="fas fa-plane-arrival mr-2"></i> <b>ARRIVALS</b>
-            </a>
-        </div>
-    </div> --}}
-    <div class="mb-3">
-        <a href="{{ route('flights.index', 'departure') }}" class="btn bg-white text-secondary px-4 mr-3">
-            <i class="fas fa-plane-departure mr-2"></i> <b>DEPARTURES</b>
-        </a>
-        <a href="{{ route('flights.index', 'arrival') }}" class="btn bg-white text-secondary px-4">
-            <i class="fas fa-plane-arrival mr-2"></i> <b>ARRIVALS</b>
-        </a>
-    </div>
+    @include('admin._pills')
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card mb-4">
@@ -74,7 +54,13 @@
                                 <td>{{ $schedule->flight->flight_number }}</td>
                                 <td>{{ $schedule->flight->origin->code }} - {{ $schedule->flight->destination->code }}</td>
                                 <td>{{ $schedule->getDay() }}</td>
-                                <td>{{ $schedule->flight->etd->format('H:i') }}</td>
+                                <td>
+                                    @if ($type == 'departure')
+                                        {{ $schedule->flight->etd }}
+                                    @elseif($type == 'arrival')
+                                        {{ $schedule->flight->eta }}
+                                    @endif
+                                </td>
                                 <td>
                                     <form action="{{ route('schedule.remark', $schedule->id) }}" method="POST" class="form-inline flex-nowrap">
                                         @csrf

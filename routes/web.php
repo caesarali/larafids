@@ -39,4 +39,6 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('schedule/{schedule}', 'ScheduleController@destroy')->name('schedule.destroy');
     Route::post('{schedule}/remark', 'ScheduleController@remark')->name('schedule.remark');
+
+    Route::resource('running-text', 'RunningTextController')->only(['index', 'update']);
 });

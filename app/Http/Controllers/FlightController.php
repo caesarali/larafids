@@ -50,7 +50,7 @@ class FlightController extends Controller
                 'day' => $day
             ]);
         }
-        return redirect()->route('control-panel')->with([
+        return redirect()->route('flights.index', $type)->with([
             'alert' => 'swal',
             'header' => 'Success!',
             'text' => 'Flight schedule has been created.',
