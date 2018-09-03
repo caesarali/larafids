@@ -14,9 +14,16 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/nprogress@0.2.0/nprogress.css" />
+    <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
+    <script>
+        NProgress.configure({ easing: 'ease', speed: 500 });
+        NProgress.start();
+    </script>
 </head>
 <body>
     <div id="app">
+        {{-- <progressbar></progressbar> --}}
         @include('layouts.navbar')
         <main class="py-4">
             @yield('content')
@@ -46,6 +53,8 @@
                 }
             });
         });
+
+        NProgress.done();
     </script>
 </body>
 </html>

@@ -9,18 +9,20 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('control-panel') }}">Control Panel</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        Data Master <span class="caret"></span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('airlines.index') }}">Airline</a>
-                        <a class="dropdown-item" href="{{ route('regions.index') }}">Location</a>
-                    </div>
-                </li>
+                @auth
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('control-panel') }}">Control Panel</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            Data Master <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('airlines.index') }}">Airline</a>
+                            <a class="dropdown-item" href="{{ route('regions.index') }}">Location</a>
+                        </div>
+                    </li>
+                @endauth
             </ul>
 
             <!-- Right Side Of Navbar -->
