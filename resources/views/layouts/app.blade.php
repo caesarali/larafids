@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} - Flight Information Display System</title>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
@@ -33,7 +33,7 @@
         NProgress.set(0.4);
         NProgress.inc();
         NProgress.configure({ ease: 'ease', speed: 500 });
-        NProgress.configure({trickleSpeed: 800 });
+        NProgress.configure({ trickleSpeed: 800 });
         NProgress.configure({ showSpinner: false });
         NProgress.configure({ parent: '#app' });
         NProgress.done();

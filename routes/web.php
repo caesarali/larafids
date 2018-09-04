@@ -18,18 +18,22 @@ Route::get('/', function () {
 Route::get('/departures', 'FidsController@departures')->name('departures');
 Route::get('/arrivals', 'FidsController@arrivals')->name('arrivals');
 
-Auth::routes();
+Route::namespace('Auth')->group(function () {
+    Route::get('/login', 'LoginController@showLoginForm')->middleware('guest')->name('login');
+    Route::post('/login', 'LoginController@login')->middleware('guest');
+    Route::post('/logout', 'LoginController@logout')->name('logout');
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('control-panel', 'HomeController@controlPanel')->name('control-panel');
 
 Route::middleware('auth')->group(function () {
     Route::namespace('Master')->group(function () {
-        Route::resource('airlines', 'AirlineController');
-        Route::resource('regions', 'RegionController');
+        Route::resource('airlines', 'AirlineController')->except(['create', 'show']);
+        Route::resource('regions', 'RegionController')->except(['create', 'show']);
         Route::post('regions/{region}/set-default', 'RegionController@setDefault')->name('regions.setDefault');
     });
 
-    Route::get('control-panel', 'HomeController@controlPanel')->name('control-panel');
     Route::get('flights/{type}', 'FlightController@index')->name('flights.index');
     Route::get('flights/{type}/create', 'FlightController@create')->name('flights.create');
     Route::post('flights/{type}', 'FlightController@store')->name('flights.store');

@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="card-body">
-                    <h4 class="text-secondary" style="line-height: 2.5rem">{!! $runningtext->text !!}</h4>
+                    <h5 class="text-secondary" style="line-height: 2.5rem">{!! $runningtext->text !!}</h5>
                 </div>
             </div>
         </div>

@@ -1,5 +1,7 @@
 @extends('layouts.fids')
 
+@section('title', 'Departures')
+
 @section('bg-color', 'bg-gradient')
 
 @section('brand')
@@ -25,7 +27,7 @@
                 </tr>
             </thead>
             <tbody class="text-white">
-                @foreach ($schedules as $schedule)
+                {{-- @foreach ($schedules as $schedule)
                     <tr>
                         <td class="airlines">
                             {!! $schedule->flight->airline->getLogo() !!}
@@ -38,6 +40,21 @@
                             {{ !empty($schedule->remark) ? $schedule->remark->getStatus() : 'ON TIME' }}
                         </td>
                         <td class="text-center">{{ $schedule->remark && !empty($schedule->remark->estimated) ? $schedule->remark->estimated : '-' }}</td>
+                    </tr>
+                @endforeach --}}
+                @foreach ($flights as $flight)
+                    <tr>
+                        <td class="airlines">
+                            {!! $flight->airline->getLogo() !!}
+                        </td>
+                        <td>{{ $flight->flight_number }}</td>
+                        <td>{{ $flight->destination->name }}</td>
+                        <td class="text-center"><span class="badge badge-warning">{{ $flight->terminal }}</span></td>
+                        <td class="text-center">{{ $flight->etd }}</td>
+                        <td class="{{ !empty($flight->schedule->remark) ? $flight->schedule->remark->getBackgroundStatus() : 'bg-primary ' }}status animated flipInX slower">
+                            {{ !empty($flight->schedule->remark) ? $flight->schedule->remark->getStatus() : 'ON TIME' }}
+                        </td>
+                        <td class="text-center">{{ $flight->schedule->remark && !empty($flight->schedule->remark->estimated) ? $flight->schedule->remark->estimated : '-' }}</td>
                     </tr>
                 @endforeach
             </tbody>

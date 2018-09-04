@@ -53,6 +53,10 @@ class Flight extends Model
         return $this->hasMany('App\Schedule');
     }
 
+    public function schedule() {
+        return $this->hasOne('App\Schedule')->where('day', date('N'));
+    }
+
     public function haveDay($day) {
         $check = $this->schedules->where('day', $day)->first();
         if ($check) {
