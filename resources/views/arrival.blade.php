@@ -48,7 +48,7 @@
 
 <nav class="navbar navbar-expand-md navbar-bottom fixed-bottom text-white bg-transparan bg-gradient">
     <marquee scrollamount="15">
-        <h1 class="marquee">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus aperiam numquam provident nam dicta veritatis, ad omnis harum quasi nobis eius cumque sint delectus, expedita distinctio sit dolore aliquid libero!</h1>
+        <h1 class="marquee">{!! $runningtext->text !!}</h1>
     </marquee>
 </nav>
 @endsection

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Flight;
 use App\Schedule;
+use App\RunningText;
 
 class FidsController extends Controller
 {
@@ -13,7 +13,8 @@ class FidsController extends Controller
         $schedules = Schedule::where('day', date('N'))->whereHas('flight', function ($query) {
             return $query->where('type', 'departure')->orderBy('etd', 'asc');
         })->get();
-        return view('departure', compact('schedules'));
+        $runningtext = RunningText::all()->first();
+        return view('departure', compact('schedules', 'runningtext'));
     }
 
     public function arrivals()
@@ -21,6 +22,7 @@ class FidsController extends Controller
         $schedules = Schedule::whereHas('flight', function ($query) {
             $query->where('type', 'arrival');
         })->where('day', date('N'))->get();
-        return view('arrival', compact('schedules'));
+        $runningtext = RunningText::all()->first();
+        return view('arrival', compact('schedules', 'runningtext'));
     }
 }

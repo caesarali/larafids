@@ -39,9 +39,9 @@
                                 <td width="120">{!! $row->getLogo() !!}</td>
                                 <td nowrap class="text-right">
                                     <a href="{{ route('airlines.edit', $row->id) }}" class="btn btn-light text-secondary"><i class="fas fa-edit"></i></a>
-                                    <form action="{{ route('airlines.destroy', $row->id) }}" method="POST" class="d-inline">
+                                    <form ref="form" action="{{ route('airlines.destroy', $row->id) }}" method="POST" class="d-inline">
                                         @csrf @method('delete')
-                                        <button type="submit" class="btn btn-light text-secondary btn-delete"><i class="fas fa-trash"></i></button>
+                                        <button @click="confirm" type="submit" class="btn btn-light text-secondary btn-delete"><i class="fas fa-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>

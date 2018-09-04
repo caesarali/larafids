@@ -12,14 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
-    <link rel="stylesheet" href="https://unpkg.com/nprogress@0.2.0/nprogress.css" />
-    <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
-    <script>
-        NProgress.configure({ easing: 'ease', speed: 500 });
-        NProgress.start();
-    </script>
+    @yield('styles')
 </head>
 <body>
     <div id="app">
@@ -34,26 +27,18 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-    @yield('scripts')
-    @include('layouts.scripts.swal')
+    <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
     <script>
-        $('.btn-delete').click(function(event) {
-            event.preventDefault();
-            swal({
-                title: "Are you sure?",
-                text: "You will not be able to recover this data!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-            .then((willDelete) => {
-                if (willDelete) {
-                    this.form.submit();
-                }
-            });
-        });
-
+        NProgress.start();
+        NProgress.set(0.4);
+        NProgress.inc();
+        NProgress.configure({ ease: 'ease', speed: 500 });
+        NProgress.configure({trickleSpeed: 800 });
+        NProgress.configure({ showSpinner: false });
+        NProgress.configure({ parent: '#app' });
         NProgress.done();
     </script>
+    @yield('scripts')
+    @include('layouts.scripts.swal')
 </body>
 </html>

@@ -77,9 +77,9 @@
                                     <a href="{{ route('flights.edit', $schedule->flight->id) }}" class="btn bg-transparant text-secondary">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <form action="{{ route('schedule.destroy', $schedule->id) }}" method="POST" class="d-inline">
+                                    <form ref="form" action="{{ route('schedule.destroy', $schedule->id) }}" method="POST" class="d-inline">
                                         @csrf @method('delete')
-                                        <button class="btn btn-link bg-transparant text-secondary btn-delete"><i class="fas fa-trash"></i></button>
+                                        <button @click="confirm" class="btn btn-link bg-transparant text-secondary btn-delete"><i class="fas fa-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>
