@@ -14,7 +14,8 @@
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <table class="table table-hover table-striped">
+        <arrivals></arrivals>
+        {{-- <table class="table table-hover table-striped">
             <thead class="thead-dark">
                 <tr>
                     <th width="300">Airline</th>
@@ -27,21 +28,6 @@
                 </tr>
             </thead>
             <tbody class="text-white">
-                {{-- @foreach ($schedules as $schedule)
-                    <tr>
-                        <td class="airlines">
-                            {!! $schedule->flight->airline->getLogo() !!}
-                        </td>
-                        <td>{{ $schedule->flight->flight_number }}</td>
-                        <td>{{ $schedule->flight->origin->name }}</td>
-                        <td class="text-center"><span class="badge badge-warning">{{ $schedule->flight->terminal }}</span></td>
-                        <td class="text-center">{{ $schedule->flight->eta }}</td>
-                        <td class="{{ !empty($schedule->remark) ? $schedule->remark->getBackgroundStatus() : 'bg-primary ' }}status animated flipInX slower">
-                            {{ !empty($schedule->remark) ? $schedule->remark->getStatus() : 'ON TIME' }}
-                        </td>
-                        <td class="text-center">{{ $schedule->remark && !empty($schedule->remark->estimated) ? $schedule->remark->estimated : '-' }}</td>
-                    </tr>
-                @endforeach --}}
                 @foreach ($flights as $flight)
                     <tr>
                         <td class="airlines">
@@ -58,14 +44,9 @@
                     </tr>
                 @endforeach
             </tbody>
-        </table>
+        </table> --}}
     </div>
 </div>
 
-
-<nav class="navbar navbar-expand-md navbar-bottom fixed-bottom text-white bg-transparan bg-gradient">
-    <marquee scrollamount="15">
-        <h1 class="marquee">{!! $runningtext->text !!}</h1>
-    </marquee>
-</nav>
+<runningtext></runningtext>
 @endsection

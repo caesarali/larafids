@@ -16,3 +16,14 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/departures', 'FidsController@departures');
+Route::get('/arrivals', 'FidsController@arrivals');
+Route::get('/runningtext', function () {
+    $runningtext = App\RunningText::all()->first();
+    $runningtext = [
+        'text' => $runningtext->text,
+        'lastUpdate' => $runningtext->updated_at
+    ];
+    return response()->json($runningtext);
+});

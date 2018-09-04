@@ -14,10 +14,17 @@ class FidsController extends Controller
         $schedules = Schedule::where('day', date('N'))->whereHas('flight', function ($query) {
             $query->where('type', 'departure')->orderBy('etd', 'asc');
         })->get();
+
         $flights = Flight::where('type', 'departure')->whereHas('schedules', function ($query) {
             $query->where('day', date('N'));
         })->orderBy('etd', 'asc')->get();
         $runningtext = RunningText::all()->first();
+
+        if (request()->ajax()) {
+            $flights->load(['airline', 'destination', 'schedule.remark']);
+            return response()->json($flights);
+        }
+
         return view('departure', compact('schedules', 'runningtext', 'flights'));
     }
 
@@ -30,6 +37,12 @@ class FidsController extends Controller
             $query->where('day', date('N'));
         })->orderBy('etd', 'asc')->get();
         $runningtext = RunningText::all()->first();
+
+        if (request()->ajax()) {
+            $flights->load(['airline', 'origin', 'schedule.remark']);
+            return response()->json($flights);
+        }
+
         return view('arrival', compact('schedules', 'runningtext', 'flights'));
     }
 }

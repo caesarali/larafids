@@ -1,6 +1,11 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.axios = require('axios');
+
+Vue.component('departures', require('./components/Departures.vue'));
+Vue.component('arrivals', require('./components/Arrivals.vue'));
+Vue.component('runningtext', require('./components/Runningtext.vue'));
 
 const app = new Vue({
     el: '#app.fids',

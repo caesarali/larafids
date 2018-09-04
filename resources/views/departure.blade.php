@@ -14,7 +14,8 @@
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <table class="table table-hover table-striped">
+        <departures></departures>
+        {{-- <table class="table table-hover table-striped">
             <thead class="thead-dark">
                 <tr>
                     <th width="300">Airline</th>
@@ -26,7 +27,7 @@
                     <th class="text-center">Estimated</th>
                 </tr>
             </thead>
-            <tbody class="text-white">
+            <tbody class="text-white"> --}}
                 {{-- @foreach ($schedules as $schedule)
                     <tr>
                         <td class="airlines">
@@ -42,7 +43,7 @@
                         <td class="text-center">{{ $schedule->remark && !empty($schedule->remark->estimated) ? $schedule->remark->estimated : '-' }}</td>
                     </tr>
                 @endforeach --}}
-                @foreach ($flights as $flight)
+                {{-- @foreach ($flights as $flight)
                     <tr>
                         <td class="airlines">
                             {!! $flight->airline->getLogo() !!}
@@ -58,7 +59,7 @@
                     </tr>
                 @endforeach
             </tbody>
-        </table>
+        </table> --}}
     </div>
 </div>
 
