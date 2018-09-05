@@ -59,7 +59,7 @@
                     case 1:
                         return 'DELAYED';
                     case 2:
-                        return 'DEPARTED';
+                        return 'LANDED';
                     case 3:
                         return 'CANCELED';
 

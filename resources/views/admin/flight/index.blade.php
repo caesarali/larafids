@@ -77,9 +77,9 @@
                                     <a href="{{ route('flights.edit', $schedule->flight->id) }}" class="btn bg-transparant text-secondary">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <form ref="form" action="{{ route('schedule.destroy', $schedule->id) }}" method="POST" class="d-inline">
+                                    <form @submit="confirm" action="{{ route('schedule.destroy', $schedule->id) }}" method="POST" class="d-inline">
                                         @csrf @method('delete')
-                                        <button @click="confirm" class="btn btn-link bg-transparant text-secondary btn-delete"><i class="fas fa-trash"></i></button>
+                                        <button type="submit" class="btn btn-link bg-transparant text-secondary"><i class="fas fa-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>
@@ -116,7 +116,8 @@
     $("input[name=estimated]").inputmask();
 
     var table = $('.table').DataTable({
-        "dom": '<"table-responsive"t>',
+        "pageLength": 25,
+        "dom": '<"table-responsive"t><"row p-2 pl-3"<"col-sm-6"l><"col-sm-6"p>>',
         "columnDefs": [
             { "orderable": false, "targets": [6, 7] },
         ]

@@ -12,7 +12,7 @@
                 <div class="card-header">
                     <a href="{{ route('flights.index', $type) }}" class="btn p-0">
                         <i class="fa fa-arrow-left"></i>
-                        <span class="ml-1 d-none d-sm-inline">Kembali</span>
+                        <span class="ml-1 d-none d-sm-inline">Back</span>
                     </a>
                 </div>
                 <form action="{{ route('flights.store', $type) }}" method="POST">

@@ -10,7 +10,11 @@ class ScheduleController extends Controller
 {
     public function destroy(Schedule $schedule)
     {
-        $schedule->delete();
+        if ($schedule->flight->schedules->count() <= 1) {
+            $schedule->flight->delete();
+        } else {
+            $schedule->delete();
+        }
         return redirect()->back()->with([
             'alert' => 'swal',
             'header' => 'Success!',

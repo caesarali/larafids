@@ -9,7 +9,7 @@
                 <div class="card-header text-center">
                     <a href="{{ route('regions.index') }}" class="btn p-0 float-left">
                         <i class="fa fa-arrow-left"></i>
-                        <span class="ml-1 d-none d-sm-inline">Kembali</span>
+                        <span class="ml-1 d-none d-sm-inline">Back</span>
                     </a>
                 </div>
                 <form action="{{ route('regions.update', $region->id) }}" method="POST">

@@ -26,12 +26,17 @@ class Remark extends Model
 
     public function getStatus() {
         $status = $this->status;
+        $flight = $this->schedule->flight->type;
         switch ($status) {
             case '1':
                 $status = 'DELAYED';
                 break;
             case '2':
-                $status = 'DEPARTED';
+                if ($flight == 'departure') {
+                    $status = 'DEPARTED';
+                } else {
+                    $status = 'LANDED';
+                }
                 break;
             case '3':
                 $status = 'CANCELED';

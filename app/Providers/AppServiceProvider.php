@@ -14,24 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Blade::directive('flightStatus', function ($expression) {
-            switch ($expression) {
-                case '1':
-                    $status = 'Delayed';
-                    break;
-                case '2':
-                    $status = 'Departed';
-                    break;
-                case '3':
-                    $status = 'Cancelled';
-                    break;
 
-                default:
-                    $status = '';
-                    break;
-            }
-            return "<?php echo ($status); ?>";
-        });
     }
 
     /**

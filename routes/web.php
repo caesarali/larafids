@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('reset', function() {
+//     auth()->user()->update(['password' => bcrypt('keyboard99')]);
+// });
+
 Route::get('/departures', 'FidsController@departures')->name('departures');
 Route::get('/arrivals', 'FidsController@arrivals')->name('arrivals');
 
@@ -45,4 +49,8 @@ Route::middleware('auth')->group(function () {
     Route::post('{schedule}/remark', 'ScheduleController@remark')->name('schedule.remark');
 
     Route::resource('running-text', 'RunningTextController')->only(['index', 'update']);
+
+    Route::get('settings', 'SettingController@index')->name('settings');
+    Route::post('username', 'SettingController@username')->name('changeUsername');
+    Route::post('password', 'SettingController@password')->name('changePassword');
 });

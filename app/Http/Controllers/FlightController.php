@@ -17,6 +17,9 @@ class FlightController extends Controller
     {
         $status = new Status;
         $statList = $status->list;
+        if ($type == 'arrival') {
+            $statList[2] = 'LANDED';
+        }
         $f = $request->f ?? null;
 
         $schedules = Schedule::whereHas('flight', function ($query) use ($type) {
@@ -42,6 +45,18 @@ class FlightController extends Controller
 
     public function store(Request $request, $type)
     {
+        $request->validate([
+            'type' => 'required|string',
+            'terminal' => 'required|integer',
+            'airline_id' => 'required|integer',
+            'aircraft_id' => 'required|string|max:3',
+            'flight_number' => 'required|string',
+            'origin_id' => 'required|integer',
+            'destination_id' => 'required|integer',
+            'etd' => 'required|date_format:"H:i"',
+            'eta' => 'required|date_format:"H:i"',
+            'days' => 'required|array|min:1'
+        ]);
         $request->request->add(['type' => $type]);
         $flight = Flight::create($request->all());
         foreach ($request->days as $day) {
@@ -67,6 +82,18 @@ class FlightController extends Controller
 
     public function update(Request $request, Flight $flight)
     {
+        $request->validate([
+            'type' => 'required|string',
+            'terminal' => 'required|integer',
+            'airline_id' => 'required|integer',
+            'aircraft_id' => 'required|string|max:3',
+            'flight_number' => 'required|string',
+            'origin_id' => 'required|integer',
+            'destination_id' => 'required|integer',
+            'etd' => 'required|date_format:"H:i"',
+            'eta' => 'required|date_format:"H:i"',
+            'days' => 'required|array|min:1'
+        ]);
         $flight->update($request->all());
         foreach ($flight->schedules as $schedule) {
             $schedule->delete();

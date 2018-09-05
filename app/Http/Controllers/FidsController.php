@@ -11,38 +11,23 @@ class FidsController extends Controller
 {
     public function departures()
     {
-        $schedules = Schedule::where('day', date('N'))->whereHas('flight', function ($query) {
-            $query->where('type', 'departure')->orderBy('etd', 'asc');
-        })->get();
+        // $flights = Flight::where('type', 'departure')->whereHas('schedules', function ($query) {
+        //     $query->where('day', date('N'));
+        // })->orderBy('etd', 'asc')->get();
+        // $runningtext = RunningText::all()->first();
 
-        $flights = Flight::where('type', 'departure')->whereHas('schedules', function ($query) {
-            $query->where('day', date('N'));
-        })->orderBy('etd', 'asc')->get();
-        $runningtext = RunningText::all()->first();
-
-        if (request()->ajax()) {
-            $flights->load(['airline', 'destination', 'schedule.remark']);
-            return response()->json($flights);
-        }
-
-        return view('departure', compact('schedules', 'runningtext', 'flights'));
+        // return view('departure', compact('runningtext', 'flights'));
+        return view('departure');
     }
 
     public function arrivals()
     {
-        $schedules = Schedule::whereHas('flight', function ($query) {
-            $query->where('type', 'arrival');
-        })->where('day', date('N'))->get();
-        $flights = Flight::where('type', 'arrival')->whereHas('schedules', function ($query) {
-            $query->where('day', date('N'));
-        })->orderBy('etd', 'asc')->get();
-        $runningtext = RunningText::all()->first();
+        // $flights = Flight::where('type', 'arrival')->whereHas('schedules', function ($query) {
+        //     $query->where('day', date('N'));
+        // })->orderBy('etd', 'asc')->get();
+        // $runningtext = RunningText::all()->first();
 
-        if (request()->ajax()) {
-            $flights->load(['airline', 'origin', 'schedule.remark']);
-            return response()->json($flights);
-        }
-
-        return view('arrival', compact('schedules', 'runningtext', 'flights'));
+        // return view('arrival', compact('runningtext', 'flights'));
+        return view('arrival');
     }
 }

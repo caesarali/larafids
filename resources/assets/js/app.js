@@ -18,7 +18,7 @@ const app = new Vue({
             })
             .then((willDelete) => {
                 if (willDelete) {
-                    this.$refs.form.submit();
+                    event.target.submit()
                 }
             });
         }

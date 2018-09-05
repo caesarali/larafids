@@ -5,9 +5,9 @@ namespace App;
 class Status
 {
     public $list = [
-        'On Time',
-        'Delayed',
-        'Departed',
-        'Canceled'
+        'ON TIME',
+        'DELAYED',
+        'DEPARTED',
+        'CANCELED'
     ];
 }
