@@ -45,17 +45,14 @@
 
             setInterval(function () {
                 this.loadData();
-            }.bind(this), 8000);
+            }.bind(this), 10000);
         },
 
         methods: {
             loadData: function () {
                 this.loaded = false;
                 axios.get('/api/departures').then(response => {
-                    if (this.flights != response.data) {
-                        this.flights = response.data,
-                        this.loaded = true
-                    }
+                    this.flights = response.data
                 });
             },
 

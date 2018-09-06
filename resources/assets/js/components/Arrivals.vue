@@ -44,7 +44,7 @@
 
             setInterval(function () {
                 this.loadData();
-            }.bind(this), 5000);
+            }.bind(this), 10000);
         },
 
         methods: {
