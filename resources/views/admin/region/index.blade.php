@@ -52,9 +52,9 @@
                                 </td>
                                 <td class="text-right">
                                     <a href="{{ route('regions.edit', $row->id) }}" class="btn btn-light text-secondary"><i class="fas fa-edit"></i></a>
-                                    <form ref="form" action="{{ route('regions.destroy', $row->id) }}" method="POST" class="d-inline">
+                                    <form @submit="confirm" ref="form" action="{{ route('regions.destroy', $row->id) }}" method="POST" class="d-inline">
                                         @csrf @method('delete')
-                                        <button @click="confirm" type="submit" class="btn btn-light text-secondary btn-delete"><i class="fas fa-trash"></i></button>
+                                        <button type="submit" class="btn btn-light text-secondary btn-delete"><i class="fas fa-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>
