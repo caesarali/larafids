@@ -52,7 +52,8 @@
             loadData: function () {
                 this.loaded = false;
                 axios.get('/api/departures').then(response => {
-                    this.flights = response.data
+                    this.flights = response.data,
+                    console.log(this.flights);
                 });
             },
 
