@@ -20,10 +20,12 @@
                 <h1 class="date text-right pr-3">
                     {{-- {{ date('l') }}<br>
                     {{ date('j F, Y') }} --}}
-                    @{{ day }}<br>
-                    @{{ date }}
+                    {{-- @{{ day }}<br>
+                    @{{ date }} --}}
+                    <span id="day"></span>
+                    <span id="date"></span>
                 </h1>
-                <div class="time">@{{ time }}</div>
+                <div class="time" id="time"></div>
             </div>
         </nav>
 

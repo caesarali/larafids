@@ -20,7 +20,7 @@
                 <td>{{ flight.destination.name }}</td>
                 <td class="text-center"><span class="badge badge-warning">{{ flight.terminal }}</span></td>
                 <td class="text-center">{{ flight.etd }}</td>
-                <td :class="[background(flight.schedule.remark ? flight.schedule.remark.status : '0'), { flipInX : loaded }]" class="status animated slower">
+                <td :class="background(flight.schedule.remark ? flight.schedule.remark.status : '0')" class="status animated flipInX slower">
                     {{ status(flight.schedule.remark ? flight.schedule.remark.status : '0') }}
                 </td>
                 <td class="text-center">
