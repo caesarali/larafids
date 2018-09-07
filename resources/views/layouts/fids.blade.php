@@ -18,10 +18,8 @@
             @yield('brand')
             <div class="navbar-nav ml-auto">
                 <h1 class="date text-right pr-3">
-                    {{-- {{ date('l') }}<br>
-                    {{ date('j F, Y') }} --}}
-                    @{{ day }}<br>
-                    @{{ date }}
+                    <div id="day"></div>
+                    <div id="date"></div>
                 </h1>
                 <div class="time" id="time"></div>
             </div>

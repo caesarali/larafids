@@ -3,9 +3,9 @@
         <thead class="thead-dark">
             <tr>
                 <th width="300">Airline</th>
-                <th>Flight Number</th>
+                <th>Flight No.</th>
                 <th>Origin</th>
-                <th class="text-center">Terminal</th>
+                <th class="text-center">Gate</th>
                 <th class="text-center">Scheduled</th>
                 <th class="text-center pl-0">Remarks</th>
                 <th class="text-center">Estimated</th>

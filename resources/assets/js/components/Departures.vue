@@ -1,14 +1,23 @@
 <template>
     <table class="table table-hover table-striped">
-        <thead class="thead-dark">
-            <tr>
+        <thead class="thead-dark animated" :class="{ flipInX: isReload }">
+            <tr v-if="lang == 'en'">
                 <th width="300">Airline</th>
-                <th>Flight Number</th>
+                <th>Flight No.</th>
                 <th>Destination</th>
-                <th class="text-center">Terminal</th>
+                <th class="text-center">Gate</th>
                 <th class="text-center">Scheduled</th>
                 <th class="text-center pl-0">Remarks</th>
                 <th class="text-center">Estimated</th>
+            </tr>
+            <tr v-else-if="lang == 'id'">
+                <th width="300">Maskapai</th>
+                <th>Penerbangan</th>
+                <th>Tujuan</th>
+                <th class="text-center">Pintu</th>
+                <th class="text-center">Jadwal</th>
+                <th class="text-center pl-0">Remark</th>
+                <th class="text-center">Perkiraan</th>
             </tr>
         </thead>
         <tbody class="text-white">
@@ -36,25 +45,39 @@
         data() {
             return {
                 flights: [],
-                loaded: true
+                lang: '',
+                isReload: false
             }
         },
 
         mounted() {
             this.loadData();
+            this.setLang();
 
             setInterval(function () {
                 this.loadData();
+                this.setLang();
+                this.isReload = true;
             }.bind(this), 10000);
         },
 
         methods: {
             loadData: function () {
-                this.loaded = false;
                 axios.get('/api/departures').then(response => {
-                    this.flights = response.data,
-                    console.log(this.flights);
+                    this.flights = response.data
                 });
+            },
+
+            setLang: function () {
+                if (this.lang == 'en') {
+                    this.lang = 'id';
+                } else {
+                    this.lang = 'en';
+                }
+            },
+
+            updated() {
+                this.isReload = false;
             },
 
             status: function (status){

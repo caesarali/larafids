@@ -63638,37 +63638,20 @@ Vue.component('arrivals', __webpack_require__(174));
 Vue.component('runningtext', __webpack_require__(177));
 
 var app = new Vue({
-    el: '#app.fids',
-    data: {
-        date: null,
-        day: null
-    },
-    methods: {
-        updateDate: function updateDate() {
-            this.day = moment().format("dddd");
-            this.date = moment().format("D MMMM, YYYY");
-        }
-    },
-    created: function created() {
-        var _this = this;
-
-        this.updateDate();
-        setInterval(function () {
-            return _this.updateDate();
-        }, 1000 * 60 * 60 * 24);
-    }
+    el: '#app.fids'
 });
 
-function clock() {
-    var now = new Date();
-    var mins = ('0' + now.getMinutes()).slice(-2);
-    var hr = now.getHours();
-    var Time = hr + ":" + mins;
-    document.getElementById("time").innerHTML = Time;
-    requestAnimationFrame(clock);
+function datetime() {
+    var time = moment().format("HH:mm");
+    var day = moment().format("dddd");
+    var date = moment().format("D MMMM, YYYY");
+    document.getElementById("time").innerHTML = time;
+    document.getElementById("day").innerHTML = day;
+    document.getElementById("date").innerHTML = date;
+    requestAnimationFrame(datetime);
 }
 
-requestAnimationFrame(clock);
+requestAnimationFrame(datetime);
 
 /***/ }),
 /* 170 */
@@ -63964,7 +63947,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\Departures.vue"
+Component.options.__file = "resources/assets/js/components/Departures.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -63973,9 +63956,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7bcba936", Component.options)
+    hotAPI.createRecord("data-v-aa436814", Component.options)
   } else {
-    hotAPI.reload("data-v-7bcba936", Component.options)
+    hotAPI.reload("data-v-aa436814", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -64024,19 +64007,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             flights: [],
-            loaded: true
+            lang: '',
+            isReload: false
         };
     },
     mounted: function mounted() {
         this.loadData();
+        this.setLang();
 
         setInterval(function () {
             this.loadData();
+            this.setLang();
+            this.isReload = true;
         }.bind(this), 10000);
     },
 
@@ -64045,11 +64041,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         loadData: function loadData() {
             var _this = this;
 
-            this.loaded = false;
             axios.get('/api/departures').then(function (response) {
-                _this.flights = response.data, console.log(_this.flights);
+                _this.flights = response.data;
             });
         },
+
+        setLang: function setLang() {
+            if (this.lang == 'en') {
+                this.lang = 'id';
+            } else {
+                this.lang = 'en';
+            }
+        },
+
+        updated: function updated() {
+            this.isReload = false;
+        },
+
 
         status: function status(_status) {
             switch (_status) {
@@ -64090,7 +64098,49 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("table", { staticClass: "table table-hover table-striped" }, [
-    _vm._m(0),
+    _c(
+      "thead",
+      { staticClass: "thead-dark animated", class: { flipInX: _vm.isReload } },
+      [
+        _vm.lang == "en"
+          ? _c("tr", [
+              _c("th", { attrs: { width: "300" } }, [_vm._v("Airline")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Flight No.")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Destination")]),
+              _vm._v(" "),
+              _c("th", { staticClass: "text-center" }, [_vm._v("Gate")]),
+              _vm._v(" "),
+              _c("th", { staticClass: "text-center" }, [_vm._v("Scheduled")]),
+              _vm._v(" "),
+              _c("th", { staticClass: "text-center pl-0" }, [
+                _vm._v("Remarks")
+              ]),
+              _vm._v(" "),
+              _c("th", { staticClass: "text-center" }, [_vm._v("Estimated")])
+            ])
+          : _vm.lang == "id"
+            ? _c("tr", [
+                _c("th", { attrs: { width: "300" } }, [_vm._v("Maskapai")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Penerbangan")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Tujuan")]),
+                _vm._v(" "),
+                _c("th", { staticClass: "text-center" }, [_vm._v("Pintu")]),
+                _vm._v(" "),
+                _c("th", { staticClass: "text-center" }, [_vm._v("Jadwal")]),
+                _vm._v(" "),
+                _c("th", { staticClass: "text-center pl-0" }, [
+                  _vm._v("Remark")
+                ]),
+                _vm._v(" "),
+                _c("th", { staticClass: "text-center" }, [_vm._v("Perkiraan")])
+              ])
+            : _vm._e()
+      ]
+    ),
     _vm._v(" "),
     _c(
       "tbody",
@@ -64160,36 +64210,13 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "thead-dark" }, [
-      _c("tr", [
-        _c("th", { attrs: { width: "300" } }, [_vm._v("Airline")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Flight Number")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Destination")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "text-center" }, [_vm._v("Terminal")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "text-center" }, [_vm._v("Scheduled")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "text-center pl-0" }, [_vm._v("Remarks")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "text-center" }, [_vm._v("Estimated")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7bcba936", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-aa436814", module.exports)
   }
 }
 
@@ -64219,7 +64246,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\Arrivals.vue"
+Component.options.__file = "resources/assets/js/components/Arrivals.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -64228,9 +64255,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-71646511", Component.options)
+    hotAPI.createRecord("data-v-6640b7d1", Component.options)
   } else {
-    hotAPI.reload("data-v-71646511", Component.options)
+    hotAPI.reload("data-v-6640b7d1", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -64422,11 +64449,11 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", { attrs: { width: "300" } }, [_vm._v("Airline")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Flight Number")]),
+        _c("th", [_vm._v("Flight No.")]),
         _vm._v(" "),
         _c("th", [_vm._v("Origin")]),
         _vm._v(" "),
-        _c("th", { staticClass: "text-center" }, [_vm._v("Terminal")]),
+        _c("th", { staticClass: "text-center" }, [_vm._v("Gate")]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center" }, [_vm._v("Scheduled")]),
         _vm._v(" "),
@@ -64442,7 +64469,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-71646511", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-6640b7d1", module.exports)
   }
 }
 
@@ -64472,7 +64499,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\Runningtext.vue"
+Component.options.__file = "resources/assets/js/components/Runningtext.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -64481,9 +64508,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-57088bc5", Component.options)
+    hotAPI.createRecord("data-v-0a4a4105", Component.options)
   } else {
-    hotAPI.reload("data-v-57088bc5", Component.options)
+    hotAPI.reload("data-v-0a4a4105", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -64566,7 +64593,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-57088bc5", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-0a4a4105", module.exports)
   }
 }
 

@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table table-hover nowrap">
+    <table class="table table-hover nowrap bt-0">
         <thead>
             <tr>
                 <th>#</th>

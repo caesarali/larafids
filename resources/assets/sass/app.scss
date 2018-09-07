@@ -16,14 +16,46 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+.blue-bt {
+  border-top: 3px solid $blue;
+}
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.app-shadow {
+  box-shadow: 0 2px 3px rgba(0,0,0,.16);
+}
+
+a.card:hover {
+  text-decoration: none;
+  .card-body h1 {
+    color: $blue
+  }
+  .card-footer {
+    background-color: $blue;
+    color: #fff;
+  }
+}
+
 .card {
   border: 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 2px 3px rgba(0,0,0,.16) !important;
+}
+
+.card-footer, .table.bt-0 th {
+  border-top: 0 !important;
+}
+
+.card-header {
+  border-bottom: 0 !important;
+}
+
+#nprogress .bar {
+  background: $green;
+  height: 3px;
 }
 
 .bg-black {

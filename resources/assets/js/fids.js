@@ -9,31 +9,18 @@ Vue.component('arrivals', require('./components/Arrivals.vue'));
 Vue.component('runningtext', require('./components/Runningtext.vue'));
 
 const app = new Vue({
-    el: '#app.fids',
-    data: {
-        date: null,
-        day: null,
-    },
-    methods: {
-        updateDate() {
-            this.day = moment().format("dddd");
-            this.date = moment().format("D MMMM, YYYY");
-        }
-    },
-    created() {
-        this.updateDate();
-        setInterval(() => this.updateDate(), 1000 * 60 * 60 * 24);
-    }
+    el: '#app.fids'
 });
 
-function clock()
+function datetime()
 {
-    var now = new Date();
-    var mins = ('0' + now.getMinutes()).slice(-2);
-    var hr = now.getHours();
-    var Time = hr + ":" + mins;
-    document.getElementById("time").innerHTML = Time;
-    requestAnimationFrame(clock);
+    let time = moment().format("HH:mm");
+    let day = moment().format("dddd");
+    let date = moment().format("D MMMM, YYYY");
+    document.getElementById("time").innerHTML = time;
+    document.getElementById("day").innerHTML = day;
+    document.getElementById("date").innerHTML = date;
+    requestAnimationFrame(datetime);
 }
 
-requestAnimationFrame(clock);
+requestAnimationFrame(datetime);

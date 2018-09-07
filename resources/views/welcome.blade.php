@@ -9,15 +9,15 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <!-- Scrpits -->
         <script src="{{ asset('js/app.js') }}" defer></script>
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style>
             html, body {
-                background-color: #fff;
                 color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 200;
                 height: 100vh;
                 margin: 0;
             }
@@ -26,38 +26,13 @@
                 height: 100vh;
             }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
             .content {
                 text-align: center;
+                margin-top: -15%;
             }
 
             .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
+                font-size: 70px;
             }
 
             .m-b-md {
@@ -66,28 +41,49 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+        <div id="app" class="blue-bt full-height d-flex align-items-center">
+            <div class="container">
+                <div class="content">
+                    <div class="title">
+                        Lara<b>FIDS</b>
+                    </div>
+                    <div class="m-b-md">
+                        <h2>
+                            [ Flight Information Display System ]
+                        </h2>
+                    </div>
+                    <div class="card-group">
+                        <a href="{{ route('departures') }}" target="_blank" class="card text-secondary">
+                            <div class="card-body">
+                                <h1 class="text-center py-5">
+                                    <i class="fas fa-plane-departure fa-3x"></i>
+                                </h1>
+                            </div>
+                            <div class="card-footer text-center">
+                                DEPARTURE
+                            </div>
+                        </a>
+                        <a href="{{ route('arrivals') }}" target="_blank" class="card text-secondary">
+                            <div class="card-body">
+                                <h1 class="text-center py-5">
+                                    <i class="fas fa-plane-arrival fa-3x"></i>
+                                </h1>
+                            </div>
+                            <div class="card-footer text-center">
+                                ARRIVAL
+                            </div>
+                        </a>
+                        <a href="{{ route('control-panel') }}" class="card text-secondary">
+                            <div class="card-body">
+                                <h1 class="text-center py-5">
+                                    <i class="fas fa-cog fa-3x"></i>
+                                </h1>
+                            </div>
+                            <div class="card-footer text-center">
+                                CONTROL PANEL
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
