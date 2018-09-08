@@ -8,7 +8,6 @@
 
     <title>@yield('title') - Flight Information Display System</title>
 
-    <script src="{{ asset('js/fids.js') }}" defer></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="@yield('bg-color')">
@@ -28,5 +27,7 @@
             @yield('content')
         </main>
     </div>
+
+    <script src="{{ asset('js/fids.js') }}"></script>
 </body>
 </html>
