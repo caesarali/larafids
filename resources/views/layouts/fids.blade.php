@@ -28,20 +28,5 @@
             @yield('content')
         </main>
     </div>
-
-
-
-    {{-- <script src="https://js.pusher.com/4.3/pusher.min.js"></script>
-    <script>
-        var pusher = new Pusher('f4ef18c463968c1a7bde', {
-            cluster: 'ap1',
-            forceTLS: true
-        });
-        var channel = pusher.subscribe('fids-development');
-
-        channel.bind('reschedule-event', function(data) {
-            console.log(JSON.stringify(data));
-        });
-    </script> --}}
 </body>
 </html>
