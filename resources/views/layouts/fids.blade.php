@@ -9,7 +9,6 @@
     <title>@yield('title') - Flight Information Display System</title>
 
     <script src="{{ asset('js/fids.js') }}" defer></script>
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="@yield('bg-color')">
