@@ -4,10 +4,10 @@
             <tr>
                 <th>#</th>
                 <th>Airline</th>
-                <th>Flight No.</th>
+                <th nowrap>Flight No.</th>
                 <th>Route</th>
                 <th>Day</th>
-                <th>ETD - ETA</th>
+                <th nowrap>ETD - ETA</th>
                 <th>Remark</th>
             </tr>
         </thead>

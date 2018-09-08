@@ -57,7 +57,7 @@
                     </div>
                     <div class="col-md-10">
                         <div class="card-group">
-                            <a href="{{ route('departures') }}" target="_blank" class="card text-secondary">
+                            <a href="{{ route('departures') }}" target="_blank" class="card text-secondary d-none d-sm-inline-block">
                                 <div class="card-body">
                                     <h1 class="text-center py-5">
                                         <i class="fas fa-plane-departure fa-2x"></i>
@@ -67,7 +67,7 @@
                                     DEPARTURE
                                 </div>
                             </a>
-                            <a href="{{ route('arrivals') }}" target="_blank" class="card text-secondary">
+                            <a href="{{ route('arrivals') }}" target="_blank" class="card text-secondary d-none d-sm-inline-block">
                                 <div class="card-body">
                                     <h1 class="text-center py-5">
                                         <i class="fas fa-plane-arrival fa-2x"></i>
