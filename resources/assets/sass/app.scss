@@ -3,17 +3,14 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 @import url('https://fonts.googleapis.com/css?family=Anaheim');
 @import url('https://fonts.googleapis.com/css?family=Archivo');
-@import url('https://use.fontawesome.com/releases/v5.2.0/css/all.css');
-
-// Libraries
-@import url('https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css');
-@import url('https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css');
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+// NProgress
+@import '~nprogress/nprogress.css';
 // Animate.css
 @import '~animate.css/animate.min.css';
 

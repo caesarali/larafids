@@ -1,6 +1,3 @@
-require('./bootstrap');
-
-window.Vue = require('vue');
 window.axios = require('axios');
 window.moment = require('moment');
 
@@ -9,7 +6,7 @@ Vue.component('arrivals', require('./components/Arrivals.vue'));
 Vue.component('runningtext', require('./components/Runningtext.vue'));
 
 const app = new Vue({
-    el: '#app.fids',
+    el: '#app',
     created() {
         Echo.channel(`fids-development`)
             .listen('RescheduleEvent', (e) => {
@@ -34,7 +31,6 @@ const app = new Vue({
                     $(this).removeClass('animated ' + animationName);
                     if (typeof callback === 'function') callback();
                 });
-
                 return this;
             },
         });
