@@ -1,14 +1,23 @@
 <template>
     <table class="table table-hover table-striped">
-        <thead class="thead-dark">
-            <tr>
+        <thead class="thead-dark toggle-head">
+            <tr v-if="lang == 'en'">
                 <th width="300">Airline</th>
-                <th>Flight No.</th>
+                <th>Flight</th>
                 <th>Origin</th>
                 <th class="text-center">Gate</th>
-                <th class="text-center">Scheduled</th>
-                <th class="text-center pl-0">Remarks</th>
+                <th class="text-center">Time</th>
+                <th class="text-center pl-0">Remark</th>
                 <th class="text-center">Estimated</th>
+            </tr>
+            <tr v-else-if="lang == 'id'">
+                <th width="300">Maskapai</th>
+                <th>Penerbangan</th>
+                <th>Asal</th>
+                <th class="text-center">Pintu</th>
+                <th class="text-center">Jadwal</th>
+                <th class="text-center pl-0">Remark</th>
+                <th class="text-center">Perkiraan</th>
             </tr>
         </thead>
         <tbody class="text-white">
@@ -35,15 +44,19 @@
     export default {
         data() {
             return {
-                flights: []
+                flights: [],
+                lang: ''
             }
         },
 
         mounted() {
             this.loadData();
+            this.setLang();
 
             setInterval(function () {
                 this.loadData();
+                this.setLang();
+                $('.toggle-head').animateCss('fadeIn');
             }.bind(this), 10000);
         },
 
@@ -52,6 +65,14 @@
                 axios.get('/api/arrivals').then(response => {
                     this.flights = response.data
                 });
+            },
+
+            setLang: function () {
+                if (this.lang == 'en') {
+                    this.lang = 'id';
+                } else {
+                    this.lang = 'en';
+                }
             },
 
             status: function (status){

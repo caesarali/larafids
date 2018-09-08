@@ -63638,7 +63638,32 @@ Vue.component('arrivals', __webpack_require__(174));
 Vue.component('runningtext', __webpack_require__(177));
 
 var app = new Vue({
-    el: '#app.fids'
+    el: '#app.fids',
+    created: function created() {
+        $.fn.extend({
+            animateCss: function animateCss(animationName, callback) {
+                var animationEnd = function (el) {
+                    var animations = {
+                        animation: 'animationend',
+                        OAnimation: 'oAnimationEnd',
+                        MozAnimation: 'mozAnimationEnd',
+                        WebkitAnimation: 'webkitAnimationEnd'
+                    };
+                    for (var t in animations) {
+                        if (el.style[t] !== undefined) {
+                            return animations[t];
+                        }
+                    }
+                }(document.createElement('div'));
+                this.addClass('animated ' + animationName).one(animationEnd, function () {
+                    $(this).removeClass('animated ' + animationName);
+                    if (typeof callback === 'function') callback();
+                });
+
+                return this;
+            }
+        });
+    }
 });
 
 function datetime() {
@@ -64021,8 +64046,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             flights: [],
-            lang: '',
-            isReload: false
+            lang: ''
         };
     },
     mounted: function mounted() {
@@ -64032,7 +64056,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         setInterval(function () {
             this.loadData();
             this.setLang();
-            this.isReload = true;
+            $('.toggle-head').animateCss('fadeIn');
         }.bind(this), 10000);
     },
 
@@ -64053,11 +64077,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.lang = 'en';
             }
         },
-
-        updated: function updated() {
-            this.isReload = false;
-        },
-
 
         status: function status(_status) {
             switch (_status) {
@@ -64098,49 +64117,41 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("table", { staticClass: "table table-hover table-striped" }, [
-    _c(
-      "thead",
-      { staticClass: "thead-dark animated", class: { flipInX: _vm.isReload } },
-      [
-        _vm.lang == "en"
+    _c("thead", { staticClass: "thead-dark toggle-head" }, [
+      _vm.lang == "en"
+        ? _c("tr", [
+            _c("th", { attrs: { width: "300" } }, [_vm._v("Airline")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Flight")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Destination")]),
+            _vm._v(" "),
+            _c("th", { staticClass: "text-center" }, [_vm._v("Gate")]),
+            _vm._v(" "),
+            _c("th", { staticClass: "text-center" }, [_vm._v("Time")]),
+            _vm._v(" "),
+            _c("th", { staticClass: "text-center pl-0" }, [_vm._v("Remark")]),
+            _vm._v(" "),
+            _c("th", { staticClass: "text-center" }, [_vm._v("Estimated")])
+          ])
+        : _vm.lang == "id"
           ? _c("tr", [
-              _c("th", { attrs: { width: "300" } }, [_vm._v("Airline")]),
+              _c("th", { attrs: { width: "300" } }, [_vm._v("Maskapai")]),
               _vm._v(" "),
-              _c("th", [_vm._v("Flight No.")]),
+              _c("th", [_vm._v("Penerbangan")]),
               _vm._v(" "),
-              _c("th", [_vm._v("Destination")]),
+              _c("th", [_vm._v("Tujuan")]),
               _vm._v(" "),
-              _c("th", { staticClass: "text-center" }, [_vm._v("Gate")]),
+              _c("th", { staticClass: "text-center" }, [_vm._v("Pintu")]),
               _vm._v(" "),
-              _c("th", { staticClass: "text-center" }, [_vm._v("Scheduled")]),
+              _c("th", { staticClass: "text-center" }, [_vm._v("Jadwal")]),
               _vm._v(" "),
-              _c("th", { staticClass: "text-center pl-0" }, [
-                _vm._v("Remarks")
-              ]),
+              _c("th", { staticClass: "text-center pl-0" }, [_vm._v("Remark")]),
               _vm._v(" "),
-              _c("th", { staticClass: "text-center" }, [_vm._v("Estimated")])
+              _c("th", { staticClass: "text-center" }, [_vm._v("Perkiraan")])
             ])
-          : _vm.lang == "id"
-            ? _c("tr", [
-                _c("th", { attrs: { width: "300" } }, [_vm._v("Maskapai")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Penerbangan")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Tujuan")]),
-                _vm._v(" "),
-                _c("th", { staticClass: "text-center" }, [_vm._v("Pintu")]),
-                _vm._v(" "),
-                _c("th", { staticClass: "text-center" }, [_vm._v("Jadwal")]),
-                _vm._v(" "),
-                _c("th", { staticClass: "text-center pl-0" }, [
-                  _vm._v("Remark")
-                ]),
-                _vm._v(" "),
-                _c("th", { staticClass: "text-center" }, [_vm._v("Perkiraan")])
-              ])
-            : _vm._e()
-      ]
-    ),
+          : _vm._e()
+    ]),
     _vm._v(" "),
     _c(
       "tbody",
@@ -64306,18 +64317,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            flights: []
+            flights: [],
+            lang: ''
         };
     },
     mounted: function mounted() {
         this.loadData();
+        this.setLang();
 
         setInterval(function () {
             this.loadData();
+            this.setLang();
+            $('.toggle-head').animateCss('fadeIn');
         }.bind(this), 10000);
     },
 
@@ -64329,6 +64353,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get('/api/arrivals').then(function (response) {
                 _this.flights = response.data;
             });
+        },
+
+        setLang: function setLang() {
+            if (this.lang == 'en') {
+                this.lang = 'id';
+            } else {
+                this.lang = 'en';
+            }
         },
 
         status: function status(_status) {
@@ -64370,7 +64402,41 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("table", { staticClass: "table table-hover table-striped" }, [
-    _vm._m(0),
+    _c("thead", { staticClass: "thead-dark toggle-head" }, [
+      _vm.lang == "en"
+        ? _c("tr", [
+            _c("th", { attrs: { width: "300" } }, [_vm._v("Airline")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Flight")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Origin")]),
+            _vm._v(" "),
+            _c("th", { staticClass: "text-center" }, [_vm._v("Gate")]),
+            _vm._v(" "),
+            _c("th", { staticClass: "text-center" }, [_vm._v("Time")]),
+            _vm._v(" "),
+            _c("th", { staticClass: "text-center pl-0" }, [_vm._v("Remark")]),
+            _vm._v(" "),
+            _c("th", { staticClass: "text-center" }, [_vm._v("Estimated")])
+          ])
+        : _vm.lang == "id"
+          ? _c("tr", [
+              _c("th", { attrs: { width: "300" } }, [_vm._v("Maskapai")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Penerbangan")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Asal")]),
+              _vm._v(" "),
+              _c("th", { staticClass: "text-center" }, [_vm._v("Pintu")]),
+              _vm._v(" "),
+              _c("th", { staticClass: "text-center" }, [_vm._v("Jadwal")]),
+              _vm._v(" "),
+              _c("th", { staticClass: "text-center pl-0" }, [_vm._v("Remark")]),
+              _vm._v(" "),
+              _c("th", { staticClass: "text-center" }, [_vm._v("Perkiraan")])
+            ])
+          : _vm._e()
+    ]),
     _vm._v(" "),
     _c(
       "tbody",
@@ -64440,30 +64506,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "thead-dark" }, [
-      _c("tr", [
-        _c("th", { attrs: { width: "300" } }, [_vm._v("Airline")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Flight No.")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Origin")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "text-center" }, [_vm._v("Gate")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "text-center" }, [_vm._v("Scheduled")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "text-center pl-0" }, [_vm._v("Remarks")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "text-center" }, [_vm._v("Estimated")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

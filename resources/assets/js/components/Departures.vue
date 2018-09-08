@@ -1,13 +1,13 @@
 <template>
     <table class="table table-hover table-striped">
-        <thead class="thead-dark animated" :class="{ flipInX: isReload }">
+        <thead class="thead-dark toggle-head">
             <tr v-if="lang == 'en'">
                 <th width="300">Airline</th>
-                <th>Flight No.</th>
+                <th>Flight</th>
                 <th>Destination</th>
                 <th class="text-center">Gate</th>
-                <th class="text-center">Scheduled</th>
-                <th class="text-center pl-0">Remarks</th>
+                <th class="text-center">Time</th>
+                <th class="text-center pl-0">Remark</th>
                 <th class="text-center">Estimated</th>
             </tr>
             <tr v-else-if="lang == 'id'">
@@ -45,8 +45,7 @@
         data() {
             return {
                 flights: [],
-                lang: '',
-                isReload: false
+                lang: ''
             }
         },
 
@@ -57,7 +56,7 @@
             setInterval(function () {
                 this.loadData();
                 this.setLang();
-                this.isReload = true;
+                $('.toggle-head').animateCss('fadeIn');
             }.bind(this), 10000);
         },
 
@@ -74,10 +73,6 @@
                 } else {
                     this.lang = 'en';
                 }
-            },
-
-            updated() {
-                this.isReload = false;
             },
 
             status: function (status){

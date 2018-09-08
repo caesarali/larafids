@@ -9,11 +9,35 @@ Vue.component('arrivals', require('./components/Arrivals.vue'));
 Vue.component('runningtext', require('./components/Runningtext.vue'));
 
 const app = new Vue({
-    el: '#app.fids'
+    el: '#app.fids',
+    created() {
+        $.fn.extend({
+            animateCss: function(animationName, callback) {
+                var animationEnd = (function(el) {
+                    var animations = {
+                        animation: 'animationend',
+                        OAnimation: 'oAnimationEnd',
+                        MozAnimation: 'mozAnimationEnd',
+                        WebkitAnimation: 'webkitAnimationEnd',
+                    };
+                    for (var t in animations) {
+                        if (el.style[t] !== undefined) {
+                            return animations[t];
+                        }
+                    }
+                })(document.createElement('div'));
+                this.addClass('animated ' + animationName).one(animationEnd, function() {
+                    $(this).removeClass('animated ' + animationName);
+                    if (typeof callback === 'function') callback();
+                });
+
+                return this;
+            },
+        });
+    }
 });
 
-function datetime()
-{
+function datetime() {
     let time = moment().format("HH:mm");
     let day = moment().format("dddd");
     let date = moment().format("D MMMM, YYYY");

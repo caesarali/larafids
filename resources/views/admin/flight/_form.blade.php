@@ -9,7 +9,7 @@
 </div>
 @endif
 <div class="form-group row">
-    <label for="type" class="col-sm-3 col-form-label">Flight - Terminal</label>
+    <label for="type" class="col-sm-3 col-form-label">Flight</label>
     <div class="col-sm-6">
         <input type="text" name="type" class="form-control{{ $errors->has('type') ? ' is-invalid' : ''}}" value="{{ strtoupper($type ?? $flight->type) }}" readonly>
         @if ($errors->has('type'))
@@ -19,7 +19,7 @@
         @endif
     </div>
     <div class="col-sm-3">
-        <input type="text" name="terminal" class="form-control{{ $errors->has('terminal') ? ' is-invalid' : ''}}" placeholder="Terminal..." value="{{ old('terminal', $flight->terminal ?? '') }}" required>
+        <input type="text" name="terminal" class="form-control{{ $errors->has('terminal') ? ' is-invalid' : ''}}" placeholder="Gate..." value="{{ old('terminal', $flight->terminal ?? '') }}" required>
         @if ($errors->has('terminal'))
             <div class="invalid-feedback">
                 {{ $errors->first('terminal') }}
@@ -117,7 +117,7 @@
 </div>
 
 <div class="form-group row">
-    <label for="type" class="col-sm-3 col-form-label">Schedule</label>
+    <label for="type" class="col-sm-3 col-form-label">Time</label>
     <div class="col-sm-4">
         <div class="input-group" id="departuretime" data-target-input="nearest">
             <input type="text" name="etd" class="form-control datetimepicker-input{{ $errors->has('etd') ? ' is-invalid' : ''}}" value="{{ old('etd', $flight->etd ?? '') }}" data-target="#departuretime" placeholder="Departure" required>
