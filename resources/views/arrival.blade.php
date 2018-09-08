@@ -8,7 +8,7 @@
     <div class="navbar-brand">
         <i class="fas fa-plane-arrival fa-3x text-white logo"></i>
     </div>
-    <h1 class="head-title pl-2">ARRIVALS</h1>
+    <h1 class="head-title pl-2">ARRIVALS / KEDATANGAN</h1>
 @endsection
 
 @section('content')

@@ -11,6 +11,10 @@ Vue.component('runningtext', require('./components/Runningtext.vue'));
 const app = new Vue({
     el: '#app.fids',
     created() {
+        Echo.channel(`fids-development`)
+            .listen('RescheduleEvent', (e) => {
+                console.log(e.update);
+        });
         $.fn.extend({
             animateCss: function(animationName, callback) {
                 var animationEnd = (function(el) {

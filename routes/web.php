@@ -19,6 +19,11 @@ Route::get('/', function () {
 //     auth()->user()->update(['password' => bcrypt('keyboard99')]);
 // });
 
+Route::get('test-pusher', function() {
+    event(new \App\Events\RescheduleEvent('update'));
+    return "Event has been sent!";
+});
+
 Route::get('/departures', 'FidsController@departures')->name('departures');
 Route::get('/arrivals', 'FidsController@arrivals')->name('arrivals');
 

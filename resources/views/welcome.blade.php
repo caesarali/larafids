@@ -28,11 +28,10 @@
 
             .content {
                 text-align: center;
-                margin-top: -15%;
             }
 
             .title {
-                font-size: 70px;
+                font-size: 60px;
             }
 
             .m-b-md {
@@ -43,46 +42,50 @@
     <body>
         <div id="app" class="blue-bt full-height d-flex align-items-center">
             <div class="container">
-                <div class="content">
-                    <div class="title">
-                        Welcome
+                <div class="row justify-content-center">
+                    <div class="content">
+                        <div class="title">
+                            Welcome
+                        </div>
+                        <div class="m-b-md">
+                            <h2>
+                                [ Flight Information Display System ]
+                            </h2>
+                        </div>
                     </div>
-                    <div class="m-b-md">
-                        <h2>
-                            [ Flight Information Display System ]
-                        </h2>
-                    </div>
-                    <div class="card-group">
-                        <a href="{{ route('departures') }}" target="_blank" class="card text-secondary">
-                            <div class="card-body">
-                                <h1 class="text-center py-5">
-                                    <i class="fas fa-plane-departure fa-3x"></i>
-                                </h1>
+                    <div class="col-md-10">
+                            <div class="card-group">
+                                <a href="{{ route('departures') }}" target="_blank" class="card text-secondary">
+                                    <div class="card-body">
+                                        <h1 class="text-center py-5">
+                                            <i class="fas fa-plane-departure fa-2x"></i>
+                                        </h1>
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        DEPARTURE
+                                    </div>
+                                </a>
+                                <a href="{{ route('arrivals') }}" target="_blank" class="card text-secondary">
+                                    <div class="card-body">
+                                        <h1 class="text-center py-5">
+                                            <i class="fas fa-plane-arrival fa-2x"></i>
+                                        </h1>
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        ARRIVAL
+                                    </div>
+                                </a>
+                                <a href="{{ route('control-panel') }}" class="card text-secondary">
+                                    <div class="card-body">
+                                        <h1 class="text-center py-5">
+                                            <i class="fas fa-cog fa-2x"></i>
+                                        </h1>
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        CONTROL PANEL
+                                    </div>
+                                </a>
                             </div>
-                            <div class="card-footer text-center">
-                                DEPARTURE
-                            </div>
-                        </a>
-                        <a href="{{ route('arrivals') }}" target="_blank" class="card text-secondary">
-                            <div class="card-body">
-                                <h1 class="text-center py-5">
-                                    <i class="fas fa-plane-arrival fa-3x"></i>
-                                </h1>
-                            </div>
-                            <div class="card-footer text-center">
-                                ARRIVAL
-                            </div>
-                        </a>
-                        <a href="{{ route('control-panel') }}" class="card text-secondary">
-                            <div class="card-body">
-                                <h1 class="text-center py-5">
-                                    <i class="fas fa-cog fa-3x"></i>
-                                </h1>
-                            </div>
-                            <div class="card-footer text-center">
-                                CONTROL PANEL
-                            </div>
-                        </a>
                     </div>
                 </div>
             </div>

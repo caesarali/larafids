@@ -15,9 +15,9 @@
                 <th>Penerbangan</th>
                 <th>Asal</th>
                 <th class="text-center">Pintu</th>
-                <th class="text-center">Jadwal</th>
+                <th class="text-center">Jam</th>
                 <th class="text-center pl-0">Remark</th>
-                <th class="text-center">Perkiraan</th>
+                <th class="text-center">Estimated</th>
             </tr>
         </thead>
         <tbody class="text-white">
@@ -29,7 +29,7 @@
                 <td>{{ flight.origin.name }}</td>
                 <td class="text-center"><span class="badge badge-warning">{{ flight.terminal }}</span></td>
                 <td class="text-center">{{ flight.eta }}</td>
-                <td :class="background(flight.schedule.remark ? flight.schedule.remark.status : '0')" class="status animated flipInX slower">
+                <td :class="background(flight.schedule.remark ? flight.schedule.remark.status : '0')" class="status animated flipInX">
                     {{ status(flight.schedule.remark ? flight.schedule.remark.status : '0') }}
                 </td>
                 <td class="text-center">
