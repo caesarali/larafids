@@ -4,18 +4,18 @@
             <tr v-if="lang == 'en'">
                 <th width="300">Airline</th>
                 <th>Flight</th>
-                <th>Origin</th>
-                <th class="text-center">Gate</th>
+                <th>Arrived From</th>
                 <th class="text-center">Time</th>
+                <th class="text-center">Gate</th>
                 <th class="text-center pl-0">Remark</th>
                 <th class="text-center">Estimated</th>
             </tr>
             <tr v-else-if="lang == 'id'">
                 <th width="300">Maskapai</th>
                 <th>Penerbangan</th>
-                <th>Asal</th>
-                <th class="text-center">Pintu</th>
+                <th>Datang Dari</th>
                 <th class="text-center">Jam</th>
+                <th class="text-center">Pintu</th>
                 <th class="text-center pl-0">Remark</th>
                 <th class="text-center">Estimated</th>
             </tr>
@@ -27,8 +27,8 @@
                 </td>
                 <td>{{ flight.flight_number }}</td>
                 <td>{{ flight.origin.name }}</td>
-                <td class="text-center"><span class="badge badge-warning">{{ flight.terminal }}</span></td>
                 <td class="text-center">{{ flight.eta }}</td>
+                <td class="text-center"><span class="badge badge-warning">{{ flight.terminal }}</span></td>
                 <td :class="background(flight.schedule.remark ? flight.schedule.remark.status : '0')" class="status animated flipInX">
                     {{ status(flight.schedule.remark ? flight.schedule.remark.status : '0') }}
                 </td>

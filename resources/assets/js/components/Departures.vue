@@ -5,8 +5,8 @@
                 <th width="300">Airline</th>
                 <th>Flight</th>
                 <th>Destination</th>
-                <th class="text-center">Gate</th>
                 <th class="text-center">Time</th>
+                <th class="text-center">Gate</th>
                 <th class="text-center pl-0">Remark</th>
                 <th class="text-center">Estimated</th>
             </tr>
@@ -14,8 +14,8 @@
                 <th width="300">Maskapai</th>
                 <th>Penerbangan</th>
                 <th>Tujuan</th>
-                <th class="text-center">Pintu</th>
                 <th class="text-center">Jam</th>
+                <th class="text-center">Pintu</th>
                 <th class="text-center pl-0">Remark</th>
                 <th class="text-center">Estimated</th>
             </tr>
@@ -27,8 +27,8 @@
                 </td>
                 <td>{{ flight.flight_number }}</td>
                 <td>{{ flight.destination.name }}</td>
-                <td class="text-center"><span class="badge badge-warning">{{ flight.terminal }}</span></td>
                 <td class="text-center">{{ flight.etd }}</td>
+                <td class="text-center"><span class="badge badge-warning">{{ flight.terminal }}</span></td>
                 <td :class="background(flight.schedule.remark ? flight.schedule.remark.status : '0')" class="status animated flipInX">
                     {{ status(flight.schedule.remark ? flight.schedule.remark.status : '0') }}
                 </td>

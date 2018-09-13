@@ -15,15 +15,15 @@
             }
         },
         mounted() {
-            this.loadData()
+            this.loadData();
             setInterval(function () {
                 this.loadData();
-            }.bind(this), 5000);
+            }.bind(this), 10000);
         },
         methods: {
             loadData: function () {
                 axios.get('/api/runningtext').then(response => {
-                    if (this.lastUpdate != response.data.lastUpdate) {
+                    if (this.lastUpdate != response.data.lastUpdate.date) {
                         this.runningtext = response.data.text
                         this.lastUpdate = response.data.lastUpdate.date
                     }

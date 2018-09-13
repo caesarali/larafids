@@ -1,5 +1,8 @@
+require('./bootstrap');
+
 window.axios = require('axios');
 window.moment = require('moment');
+window.Vue = require('vue');
 
 Vue.component('departures', require('./components/Departures.vue'));
 Vue.component('arrivals', require('./components/Arrivals.vue'));
