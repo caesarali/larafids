@@ -4,7 +4,7 @@
             <tr v-if="lang == 'en'">
                 <th width="300">Airline</th>
                 <th>Flight</th>
-                <th>Arrived From</th>
+                <th>Arriving From</th>
                 <th class="text-center">Time</th>
                 <th class="text-center">Gate</th>
                 <th class="text-center pl-0">Remark</th>
