@@ -77,11 +77,11 @@
 
             status: function (status){
                 switch (status) {
-                    case 1:
+                    case '1':
                         return 'DELAYED';
-                    case 2:
+                    case '2':
                         return 'LANDED';
-                    case 3:
+                    case '3':
                         return 'CANCELED';
 
                     default:
@@ -91,11 +91,11 @@
 
             background: function (status) {
                 switch (status) {
-                    case 1:
+                    case '1':
                         return 'bg-warning';
-                    case 2:
+                    case '2':
                         return 'bg-success';
-                    case 3:
+                    case '3':
                         return 'bg-danger';
 
                     default:
