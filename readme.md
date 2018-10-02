@@ -17,6 +17,8 @@ Documentation for the framework can be found on the [Laravel website](http://lar
 
 - Config the ` .env ` file
 
+- Run `php artisan key:generate`
+
 - Run `php artisan migrate`
 
 - Run `php artisan db:seed`
