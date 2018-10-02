@@ -21,14 +21,14 @@
                     <td>{{ $schedule->getDay() }}</td>
                     <td>{{ $schedule->flight->etd }} - {{ $schedule->flight->eta }}</td>
                     <td>
-                        <form action="{{ route('schedule.remark', $schedule->id) }}" method="POST" class="form-inline flex-nowrap">
+                        <form action="{{ route('schedule.remark', $schedule->id) }}" method="POST" class="form-inline flex-nowrap" onsubmit="check(this)">
                             @csrf
                             <select class="form-control mr-3" name="status" style="width: 100%" data-remark="{{ $schedule->remark->status ?? 0 }}">
                                 @foreach ($statList as $status)
                                     <option value="{{ $loop->index }}" {{ ($schedule->remark->status ?? 0) == $loop->index ? 'selected' : '' }}>{{ $status }}</option>
                                 @endforeach
                             </select>
-                            <input type="text" class="form-control text-center" style="width: 100%" name="estimated" value="{{ $schedule->remark->estimated ?? '' }}" data-inputmask-alias="datetime" data-inputmask-inputformat="HH:MM" data-inputmask-placeholder="hh:mm" placeholder="On Time">
+                            <input type="text" class="form-control text-center" style="width: 100%" name="estimated" data-estimated="{{ $schedule->remark->estimated ?? '' }}" value="{{ $schedule->remark->estimated ?? '' }}" data-inputmask-alias="datetime" data-inputmask-inputformat="HH:MM" data-inputmask-placeholder="hh:mm" placeholder="On Time">
                             <button type="submit" class="btn btn-link bg-transparant text-secondary invisible"><i class="fas fa-check"></i></button>
                         </form>
                     </td>

@@ -32,6 +32,21 @@
 @section('scripts')
 <script src="https://cdn.rawgit.com/RobinHerbots/Inputmask/4.x/dist/min/jquery.inputmask.bundle.min.js"></script>
 <script>
+    function check(form) {
+        event.preventDefault();
+        let estimated = $(form).find('input[name=estimated]');
+        let $estimated = estimated.val();
+        let hour1 = $estimated.substr(0,1);
+        let hour2 = $estimated.substr(1,1);
+        let minute1 = $estimated.substr(3,1);
+        let minute2 = $estimated.substr(4,1);
+        if (hour1 == 'h' || hour2 == 'h' || minute1 == 'm' || minute2 == 'm') {
+            estimated.focus();
+        } else {
+            form.submit();
+        }
+    }
+
     $('select[name=status]').change(function () {
         let estimated = $(this).next('input[name=estimated]');
         let submit = $(this).nextAll('.btn');
@@ -47,6 +62,22 @@
             submit.removeClass('invisible');
         } else {
             submit.addClass('invisible');
+        }
+    });
+
+    $('input[name=estimated]').keyup(function () {
+        let status = $(this).prev('select[name=status]').val();
+        let submit = $(this).nextAll('.btn');
+        if (this.value != $(this).data('estimated')) {
+            submit.removeClass('invisible');
+        } else {
+            submit.addClass('invisible');
+        }
+
+        if (status != 1) {
+            $(this).removeAttr('required');
+        } else {
+            $(this).attr('required', 'required');
         }
     });
 
