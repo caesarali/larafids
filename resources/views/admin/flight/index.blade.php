@@ -69,7 +69,7 @@
                                                 <option value="{{ $loop->index }}" {{ ($schedule->remark->status ?? 0) == $loop->index ? 'selected' : '' }}>{{ $status }}</option>
                                             @endforeach
                                         </select>
-                                        <input type="text" class="form-control text-center" name="estimated" value="{{ $schedule->remark->estimated ?? '' }}" data-inputmask-alias="datetime" data-inputmask-inputformat="HH:MM" data-inputmask-placeholder="hh:mm" placeholder="On Time">
+                                        <input type="text" class="form-control text-center" name="estimated" data-estimated="{{ $schedule->remark->estimated ?? '' }}" value="{{ $schedule->remark->estimated ?? '' }}" data-inputmask-alias="datetime" data-inputmask-inputformat="HH:MM" data-inputmask-placeholder="hh:mm" placeholder="On Time">
                                         <button type="submit" class="btn btn-link bg-transparant text-secondary invisible"><i class="fas fa-check"></i></button>
                                     </form>
                                 </td>
