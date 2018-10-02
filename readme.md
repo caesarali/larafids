@@ -21,7 +21,7 @@ Documentation for the framework can be found on the [Laravel website](http://lar
 
 - Run `php artisan db:seed`
 
-- Run 'php artisan storage:link'
+- Run `php artisan storage:link`
 
 - Run `php artisan serve`
 
