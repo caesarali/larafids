@@ -1,5 +1,19 @@
 @extends('layouts.app')
 
+@section('styles')
+    <style>
+        .with-inline-btn {
+            font-weight: bold;
+        }
+        .with-inline-btn i {
+            visibility: hidden;
+        }
+        .with-inline-btn:hover i {
+            visibility: visible;
+        }
+    </style>
+@endsection
+
 @section('content')
 <div class="container">
     @include('admin._pills')
@@ -26,6 +40,32 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST">
+                    <div class="modal-body">
+                        @csrf @method('patch')
+                        <div class="form-group">
+                            <label for="flight_number" class="col-form-label">Flight Number:</label>
+                            <input type="text" name="flight_number" class="form-control" id="flight_number">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Send message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 
@@ -46,6 +86,15 @@
             form.submit();
         }
     }
+
+    $('.modal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        var route = button.data('route')
+        var data = button.data('flight')
+        var modal = $(this)
+        modal.find('form').attr('action', route)
+        modal.find('.modal-body #flight_number').val(data)
+    })
 
     $('select[name=status]').change(function () {
         let estimated = $(this).next('input[name=estimated]');

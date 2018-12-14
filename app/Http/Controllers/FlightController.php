@@ -123,4 +123,18 @@ class FlightController extends Controller
             'type' => 'success'
         ]);
     }
+
+    public function updateFlightNumber(Request $request, Flight $flight)
+    {
+        $request->validate([
+            'flight_number' => 'required|string'
+        ]);
+        $flight->update($request->all());
+        return redirect()->back()->with([
+            'alert' => 'swal',
+            'header' => 'Success!',
+            'text' => 'Flight schedule has been updated.',
+            'type' => 'success'
+        ]);
+    }
 }

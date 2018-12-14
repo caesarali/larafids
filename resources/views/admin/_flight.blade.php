@@ -16,7 +16,11 @@
                 <tr>
                     <td class="text-center">{{ $loop->iteration }}.</td>
                     <td>{{ $schedule->flight->airline->name }}</td>
-                    <td>{{ $schedule->flight->flight_number }}</td>
+                    <td>
+                        <a class="with-inline-btn" href="#" data-toggle="modal" data-target=".modal" data-route="{{ route('flights.update.number', $schedule->flight->id) }}" data-flight="{{ $schedule->flight->flight_number }}">
+                            {{ $schedule->flight->flight_number }} <i class="fas fa-pencil-alt ml-1"></i>
+                        </a>
+                    </td>
                     <td>{{ $schedule->flight->origin->code }} - {{ $schedule->flight->destination->code }}</td>
                     <td>{{ $schedule->getDay() }}</td>
                     <td>{{ $schedule->flight->etd }} - {{ $schedule->flight->eta }}</td>

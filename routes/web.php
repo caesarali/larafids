@@ -48,6 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::post('flights/{type}', 'FlightController@store')->name('flights.store');
     Route::get('flights/{flight}/edit', 'FlightController@edit')->name('flights.edit');
     Route::patch('flights/{flight}', 'FlightController@update')->name('flights.update');
+    Route::patch('flights/{flight}/number', 'FlightController@updateFlightNumber')->name('flights.update.number');
     Route::delete('flights/{flight}', 'FlightController@destroy')->name('flights.destroy');
 
     Route::delete('schedule/{schedule}', 'ScheduleController@destroy')->name('schedule.destroy');
