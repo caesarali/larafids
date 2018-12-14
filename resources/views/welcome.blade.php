@@ -47,7 +47,7 @@
                 <div class="row justify-content-center">
                     <div class="content">
                         <div class="title">
-                            Welcome
+                            Welcome to
                         </div>
                         <div class="m-b-md">
                             <h2>
