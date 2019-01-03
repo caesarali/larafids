@@ -29,8 +29,8 @@
                 <td>{{ flight.destination.name }}</td>
                 <td class="text-center">{{ flight.etd }}</td>
                 <td class="text-center"><span class="badge badge-warning">{{ flight.terminal }}</span></td>
-                <td :class="background(flight.schedule.remark ? flight.schedule.remark.status : '0')" class="status animated flipInX">
-                    {{ status(flight.schedule.remark ? flight.schedule.remark.status : '0') }}
+                <td :class="background(flight.schedule.remark ? flight.schedule.remark.status : 0)" class="status animated flipInX">
+                    {{ status(flight.schedule.remark ? flight.schedule.remark.status : 0) }}
                 </td>
                 <td class="text-center">
                     {{ flight.schedule.remark && flight.schedule.remark.estimated ? flight.schedule.remark.estimated : '-' }}
@@ -77,11 +77,11 @@
 
             status: function (status){
                 switch (status) {
-                    case '1':
+                    case 1:
                         return 'DELAYED';
-                    case '2':
+                    case 2:
                         return 'DEPARTED';
-                    case '3':
+                    case 3:
                         return 'CANCELED';
 
                     default:
@@ -91,11 +91,11 @@
 
             background: function (status) {
                 switch (status) {
-                    case '1':
+                    case 1:
                         return 'bg-warning';
-                    case '2':
+                    case 2:
                         return 'bg-success';
-                    case '3':
+                    case 3:
                         return 'bg-danger';
 
                     default:
