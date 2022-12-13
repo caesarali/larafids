@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Administrator',
             'email' => 'admin@larafids',
             'username' => 'admin',
-            'password' => '$2y$10$iwLO2XesgEazE0mzLaLypuklg5AjqQSZ1x/Bo.jQ3XuX0O4okh9P6',
+            'password' => '$2y$10$/NofHmJlJ/4Vz/CbRgYFxOwRoYWgd1AfX.XZlREgaFeg8TZzkBnHK',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
